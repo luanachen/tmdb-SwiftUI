@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		EB8E246D2613CE2E009D9409 /* MoviesDB_LuanaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */; };
-		EB8E246F2613CE2E009D9409 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E246E2613CE2E009D9409 /* ContentView.swift */; };
+		EB8E246F2613CE2E009D9409 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E246E2613CE2E009D9409 /* LoginView.swift */; };
 		EB8E24712613CE31009D9409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8E24702613CE31009D9409 /* Assets.xcassets */; };
 		EB8E24742613CE31009D9409 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8E24732613CE31009D9409 /* Preview Assets.xcassets */; };
 		EB8E247F2613CE31009D9409 /* MoviesDB_LuanaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E247E2613CE31009D9409 /* MoviesDB_LuanaTests.swift */; };
 		EB8E248A2613CE31009D9409 /* MoviesDB_LuanaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24892613CE31009D9409 /* MoviesDB_LuanaUITests.swift */; };
+		EB8E24A82613E079009D9409 /* LoginButtonContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24A72613E079009D9409 /* LoginButtonContent.swift */; };
+		EB8E24B62613ECAE009D9409 /* LoginTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24B52613ECAE009D9409 /* LoginTextFieldModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +37,7 @@
 /* Begin PBXFileReference section */
 		EB8E24692613CE2E009D9409 /* MoviesDB-Luana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MoviesDB-Luana.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDB_LuanaApp.swift; sourceTree = "<group>"; };
-		EB8E246E2613CE2E009D9409 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EB8E246E2613CE2E009D9409 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EB8E24702613CE31009D9409 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB8E24732613CE31009D9409 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB8E24752613CE31009D9409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		EB8E24852613CE31009D9409 /* MoviesDB-LuanaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MoviesDB-LuanaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB8E24892613CE31009D9409 /* MoviesDB_LuanaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDB_LuanaUITests.swift; sourceTree = "<group>"; };
 		EB8E248B2613CE31009D9409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB8E24A72613E079009D9409 /* LoginButtonContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonContent.swift; sourceTree = "<group>"; };
+		EB8E24B52613ECAE009D9409 /* LoginTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */,
-				EB8E246E2613CE2E009D9409 /* ContentView.swift */,
+				EB8E24BA2613EE5B009D9409 /* Login */,
 				EB8E24702613CE31009D9409 /* Assets.xcassets */,
 				EB8E24752613CE31009D9409 /* Info.plist */,
 				EB8E24722613CE31009D9409 /* Preview Content */,
@@ -128,6 +132,24 @@
 				EB8E248B2613CE31009D9409 /* Info.plist */,
 			);
 			path = "MoviesDB-LuanaUITests";
+			sourceTree = "<group>";
+		};
+		EB8E24A02613DFDB009D9409 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB8E246E2613CE2E009D9409 /* LoginView.swift */,
+				EB8E24A72613E079009D9409 /* LoginButtonContent.swift */,
+				EB8E24B52613ECAE009D9409 /* LoginTextFieldModifier.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EB8E24BA2613EE5B009D9409 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EB8E24A02613DFDB009D9409 /* Views */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +281,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB8E246F2613CE2E009D9409 /* ContentView.swift in Sources */,
+				EB8E24B62613ECAE009D9409 /* LoginTextFieldModifier.swift in Sources */,
+				EB8E246F2613CE2E009D9409 /* LoginView.swift in Sources */,
+				EB8E24A82613E079009D9409 /* LoginButtonContent.swift in Sources */,
 				EB8E246D2613CE2E009D9409 /* MoviesDB_LuanaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
