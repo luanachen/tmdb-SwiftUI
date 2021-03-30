@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB8E246D2613CE2E009D9409 /* MoviesDB_LuanaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */; };
+		EB8E246F2613CE2E009D9409 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E246E2613CE2E009D9409 /* ContentView.swift */; };
+		EB8E24712613CE31009D9409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8E24702613CE31009D9409 /* Assets.xcassets */; };
+		EB8E24742613CE31009D9409 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8E24732613CE31009D9409 /* Preview Assets.xcassets */; };
+		EB8E247F2613CE31009D9409 /* MoviesDB_LuanaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E247E2613CE31009D9409 /* MoviesDB_LuanaTests.swift */; };
+		EB8E248A2613CE31009D9409 /* MoviesDB_LuanaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24892613CE31009D9409 /* MoviesDB_LuanaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB8E247B2613CE31009D9409 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB8E24612613CE2E009D9409 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB8E24682613CE2E009D9409;
+			remoteInfo = "MoviesDB-Luana";
+		};
+		EB8E24862613CE31009D9409 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB8E24612613CE2E009D9409 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB8E24682613CE2E009D9409;
+			remoteInfo = "MoviesDB-Luana";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EB8E24692613CE2E009D9409 /* MoviesDB-Luana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MoviesDB-Luana.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDB_LuanaApp.swift; sourceTree = "<group>"; };
+		EB8E246E2613CE2E009D9409 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EB8E24702613CE31009D9409 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB8E24732613CE31009D9409 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EB8E24752613CE31009D9409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB8E247A2613CE31009D9409 /* MoviesDB-LuanaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MoviesDB-LuanaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB8E247E2613CE31009D9409 /* MoviesDB_LuanaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDB_LuanaTests.swift; sourceTree = "<group>"; };
+		EB8E24802613CE31009D9409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB8E24852613CE31009D9409 /* MoviesDB-LuanaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MoviesDB-LuanaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB8E24892613CE31009D9409 /* MoviesDB_LuanaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDB_LuanaUITests.swift; sourceTree = "<group>"; };
+		EB8E248B2613CE31009D9409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EB8E24662613CE2E009D9409 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB8E24772613CE31009D9409 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB8E24822613CE31009D9409 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB8E24602613CE2E009D9409 = {
+			isa = PBXGroup;
+			children = (
+				EB8E246B2613CE2E009D9409 /* MoviesDB-Luana */,
+				EB8E247D2613CE31009D9409 /* MoviesDB-LuanaTests */,
+				EB8E24882613CE31009D9409 /* MoviesDB-LuanaUITests */,
+				EB8E246A2613CE2E009D9409 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EB8E246A2613CE2E009D9409 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB8E24692613CE2E009D9409 /* MoviesDB-Luana.app */,
+				EB8E247A2613CE31009D9409 /* MoviesDB-LuanaTests.xctest */,
+				EB8E24852613CE31009D9409 /* MoviesDB-LuanaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EB8E246B2613CE2E009D9409 /* MoviesDB-Luana */ = {
+			isa = PBXGroup;
+			children = (
+				EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */,
+				EB8E246E2613CE2E009D9409 /* ContentView.swift */,
+				EB8E24702613CE31009D9409 /* Assets.xcassets */,
+				EB8E24752613CE31009D9409 /* Info.plist */,
+				EB8E24722613CE31009D9409 /* Preview Content */,
+			);
+			path = "MoviesDB-Luana";
+			sourceTree = "<group>";
+		};
+		EB8E24722613CE31009D9409 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EB8E24732613CE31009D9409 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EB8E247D2613CE31009D9409 /* MoviesDB-LuanaTests */ = {
+			isa = PBXGroup;
+			children = (
+				EB8E247E2613CE31009D9409 /* MoviesDB_LuanaTests.swift */,
+				EB8E24802613CE31009D9409 /* Info.plist */,
+			);
+			path = "MoviesDB-LuanaTests";
+			sourceTree = "<group>";
+		};
+		EB8E24882613CE31009D9409 /* MoviesDB-LuanaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EB8E24892613CE31009D9409 /* MoviesDB_LuanaUITests.swift */,
+				EB8E248B2613CE31009D9409 /* Info.plist */,
+			);
+			path = "MoviesDB-LuanaUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EB8E24682613CE2E009D9409 /* MoviesDB-Luana */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB8E248E2613CE31009D9409 /* Build configuration list for PBXNativeTarget "MoviesDB-Luana" */;
+			buildPhases = (
+				EB8E24652613CE2E009D9409 /* Sources */,
+				EB8E24662613CE2E009D9409 /* Frameworks */,
+				EB8E24672613CE2E009D9409 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MoviesDB-Luana";
+			productName = "MoviesDB-Luana";
+			productReference = EB8E24692613CE2E009D9409 /* MoviesDB-Luana.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EB8E24792613CE31009D9409 /* MoviesDB-LuanaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB8E24912613CE31009D9409 /* Build configuration list for PBXNativeTarget "MoviesDB-LuanaTests" */;
+			buildPhases = (
+				EB8E24762613CE31009D9409 /* Sources */,
+				EB8E24772613CE31009D9409 /* Frameworks */,
+				EB8E24782613CE31009D9409 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB8E247C2613CE31009D9409 /* PBXTargetDependency */,
+			);
+			name = "MoviesDB-LuanaTests";
+			productName = "MoviesDB-LuanaTests";
+			productReference = EB8E247A2613CE31009D9409 /* MoviesDB-LuanaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EB8E24842613CE31009D9409 /* MoviesDB-LuanaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB8E24942613CE31009D9409 /* Build configuration list for PBXNativeTarget "MoviesDB-LuanaUITests" */;
+			buildPhases = (
+				EB8E24812613CE31009D9409 /* Sources */,
+				EB8E24822613CE31009D9409 /* Frameworks */,
+				EB8E24832613CE31009D9409 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB8E24872613CE31009D9409 /* PBXTargetDependency */,
+			);
+			name = "MoviesDB-LuanaUITests";
+			productName = "MoviesDB-LuanaUITests";
+			productReference = EB8E24852613CE31009D9409 /* MoviesDB-LuanaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EB8E24612613CE2E009D9409 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					EB8E24682613CE2E009D9409 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					EB8E24792613CE31009D9409 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = EB8E24682613CE2E009D9409;
+					};
+					EB8E24842613CE31009D9409 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = EB8E24682613CE2E009D9409;
+					};
+				};
+			};
+			buildConfigurationList = EB8E24642613CE2E009D9409 /* Build configuration list for PBXProject "MoviesDB-Luana" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EB8E24602613CE2E009D9409;
+			productRefGroup = EB8E246A2613CE2E009D9409 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EB8E24682613CE2E009D9409 /* MoviesDB-Luana */,
+				EB8E24792613CE31009D9409 /* MoviesDB-LuanaTests */,
+				EB8E24842613CE31009D9409 /* MoviesDB-LuanaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB8E24672613CE2E009D9409 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB8E24742613CE31009D9409 /* Preview Assets.xcassets in Resources */,
+				EB8E24712613CE31009D9409 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB8E24782613CE31009D9409 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB8E24832613CE31009D9409 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EB8E24652613CE2E009D9409 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB8E246F2613CE2E009D9409 /* ContentView.swift in Sources */,
+				EB8E246D2613CE2E009D9409 /* MoviesDB_LuanaApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB8E24762613CE31009D9409 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB8E247F2613CE31009D9409 /* MoviesDB_LuanaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB8E24812613CE31009D9409 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB8E248A2613CE31009D9409 /* MoviesDB_LuanaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB8E247C2613CE31009D9409 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB8E24682613CE2E009D9409 /* MoviesDB-Luana */;
+			targetProxy = EB8E247B2613CE31009D9409 /* PBXContainerItemProxy */;
+		};
+		EB8E24872613CE31009D9409 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB8E24682613CE2E009D9409 /* MoviesDB-Luana */;
+			targetProxy = EB8E24862613CE31009D9409 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EB8E248C2613CE31009D9409 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EB8E248D2613CE31009D9409 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EB8E248F2613CE31009D9409 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MoviesDB-Luana/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "MoviesDB-Luana/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "lccj.MoviesDB-Luana";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EB8E24902613CE31009D9409 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MoviesDB-Luana/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "MoviesDB-Luana/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "lccj.MoviesDB-Luana";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EB8E24922613CE31009D9409 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "MoviesDB-LuanaTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "lccj.MoviesDB-LuanaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoviesDB-Luana.app/MoviesDB-Luana";
+			};
+			name = Debug;
+		};
+		EB8E24932613CE31009D9409 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "MoviesDB-LuanaTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "lccj.MoviesDB-LuanaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoviesDB-Luana.app/MoviesDB-Luana";
+			};
+			name = Release;
+		};
+		EB8E24952613CE31009D9409 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "MoviesDB-LuanaUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "lccj.MoviesDB-LuanaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MoviesDB-Luana";
+			};
+			name = Debug;
+		};
+		EB8E24962613CE31009D9409 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "MoviesDB-LuanaUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "lccj.MoviesDB-LuanaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MoviesDB-Luana";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EB8E24642613CE2E009D9409 /* Build configuration list for PBXProject "MoviesDB-Luana" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB8E248C2613CE31009D9409 /* Debug */,
+				EB8E248D2613CE31009D9409 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB8E248E2613CE31009D9409 /* Build configuration list for PBXNativeTarget "MoviesDB-Luana" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB8E248F2613CE31009D9409 /* Debug */,
+				EB8E24902613CE31009D9409 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB8E24912613CE31009D9409 /* Build configuration list for PBXNativeTarget "MoviesDB-LuanaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB8E24922613CE31009D9409 /* Debug */,
+				EB8E24932613CE31009D9409 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB8E24942613CE31009D9409 /* Build configuration list for PBXNativeTarget "MoviesDB-LuanaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB8E24952613CE31009D9409 /* Debug */,
+				EB8E24962613CE31009D9409 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EB8E24612613CE2E009D9409 /* Project object */;
+}
