@@ -16,7 +16,11 @@ class LoginViewModel: ObservableObject {
     @Published var userNameError: String?
     @Published var passwordError: String?
 
+    private var requestToken: String?
+
     private var cancellableSet: Set<AnyCancellable> = []
+
+    private var repository = LoginRepository()
 
     init() {
         setupPublishers()
@@ -73,7 +77,36 @@ class LoginViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
 
+    func onAppear() {
+        fetchRequestToken()
+    }
+
     func login() {
-        print("Login")
+        loginWith(username: username, password: password)
+    }
+
+    private func fetchRequestToken() {
+        repository.requestToken { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let auth):
+                self.requestToken = auth.requestToken
+            }
+        }
+    }
+
+    private func loginWith(username: String, password: String) {
+        guard let requestToken = requestToken else { return }
+        let model = LoginModel(username: username, password: password, requestToken: requestToken)
+        repository.loginWithUser(login: model) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let auth):
+                self?.requestToken = auth.requestToken
+            }
+        }
     }
 }

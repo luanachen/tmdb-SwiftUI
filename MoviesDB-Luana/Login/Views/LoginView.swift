@@ -33,6 +33,9 @@ struct LoginView: View {
             .padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 80))
         )
         .edgesIgnoringSafeArea(.all)
+        .onAppear(perform: {
+            viewModel.onAppear()
+        })
     }
 }
 
