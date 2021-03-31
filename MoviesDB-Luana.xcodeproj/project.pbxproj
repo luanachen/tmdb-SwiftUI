@@ -15,6 +15,7 @@
 		EB8E248A2613CE31009D9409 /* MoviesDB_LuanaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24892613CE31009D9409 /* MoviesDB_LuanaUITests.swift */; };
 		EB8E24A82613E079009D9409 /* LoginButtonContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24A72613E079009D9409 /* LoginButtonContent.swift */; };
 		EB8E24B62613ECAE009D9409 /* LoginTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24B52613ECAE009D9409 /* LoginTextFieldModifier.swift */; };
+		EB8E24C12613EFBF009D9409 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24C02613EFBF009D9409 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		EB8E248B2613CE31009D9409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB8E24A72613E079009D9409 /* LoginButtonContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonContent.swift; sourceTree = "<group>"; };
 		EB8E24B52613ECAE009D9409 /* LoginTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldModifier.swift; sourceTree = "<group>"; };
+		EB8E24C02613EFBF009D9409 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,9 +149,18 @@
 		EB8E24BA2613EE5B009D9409 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				EB8E24BF2613EF92009D9409 /* ViewModel */,
 				EB8E24A02613DFDB009D9409 /* Views */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		EB8E24BF2613EF92009D9409 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EB8E24C02613EFBF009D9409 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +295,7 @@
 				EB8E24B62613ECAE009D9409 /* LoginTextFieldModifier.swift in Sources */,
 				EB8E246F2613CE2E009D9409 /* LoginView.swift in Sources */,
 				EB8E24A82613E079009D9409 /* LoginButtonContent.swift in Sources */,
+				EB8E24C12613EFBF009D9409 /* LoginViewModel.swift in Sources */,
 				EB8E246D2613CE2E009D9409 /* MoviesDB_LuanaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
