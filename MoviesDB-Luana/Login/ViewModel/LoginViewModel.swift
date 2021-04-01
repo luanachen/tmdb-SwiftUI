@@ -15,8 +15,8 @@ class LoginViewModel: ObservableObject {
     @Published var isValid: Bool = false
     @Published var userNameError: String?
     @Published var passwordError: String?
-
-    private var requestToken: String?
+    @Published var shouldAskPermission: Bool = false
+    @Published var requestToken: String?
 
     private var cancellableSet: Set<AnyCancellable> = []
 
@@ -77,15 +77,11 @@ class LoginViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
 
-    func onAppear() {
-        fetchRequestToken()
+    func login(completion: @escaping () -> Void) {
+        loginWith(username: username, password: password, completion: completion)
     }
 
-    func login() {
-        loginWith(username: username, password: password)
-    }
-
-    private func fetchRequestToken() {
+    func fetchRequestToken(completion: @escaping () -> Void) {
         repository.requestToken { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -93,11 +89,12 @@ class LoginViewModel: ObservableObject {
                 print(error)
             case .success(let auth):
                 self.requestToken = auth.requestToken
+                completion()
             }
         }
     }
 
-    private func loginWith(username: String, password: String) {
+    private func loginWith(username: String, password: String, completion: @escaping () -> Void) {
         guard let requestToken = requestToken else { return }
         let model = LoginModel(username: username, password: password, requestToken: requestToken)
         repository.loginWithUser(login: model) { [weak self] result in
@@ -106,6 +103,8 @@ class LoginViewModel: ObservableObject {
                 print(error.localizedDescription)
             case .success(let auth):
                 self?.requestToken = auth.requestToken
+                self?.repository.saveUserSession(requestToken: requestToken)
+                completion()
             }
         }
     }

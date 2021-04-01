@@ -69,6 +69,7 @@ struct ShowsCollectionView: View {
                             .foregroundColor(.white)
                     })
             )
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct MoviesDB_LuanaApp: App {
+    private var sessionManager = SessionStoreManager()
+
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            if let _ = sessionManager.getUserSession() {
+                ShowsCollectionView()
+            } else {
+                LoginView()
+            }
         }
     }
 }
