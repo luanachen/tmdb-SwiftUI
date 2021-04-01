@@ -43,7 +43,7 @@ struct LoginView: View {
             .edgesIgnoringSafeArea(.all)
             .onAppear(perform: {
                 viewModel.fetchRequestToken {
-                    if let token = viewModel.requestToken, let url = URL(string: "https://www.themoviedb.org/authenticate/\(token)") {
+                    if let token = viewModel.requestToken, let url = URL(string: "https://www.themoviedb.org/authenticate/\(token)?redirect_to=MoviesDB-Luana://") {
                         openURL(url)
                     }
                 }
