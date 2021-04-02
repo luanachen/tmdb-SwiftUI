@@ -22,20 +22,10 @@ struct ShowsCollectionView: View {
     let coloredNavAppearance = UINavigationBarAppearance()
 
     init() {
-        coloredNavAppearance.configureWithOpaqueBackground()
-        coloredNavAppearance.backgroundColor = #colorLiteral(red: 0.1285548806, green: 0.1735598147, blue: 0.1902512908, alpha: 1)
-        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-
-        UINavigationBar.appearance().standardAppearance = coloredNavAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
-        
-        UISegmentedControl.appearance().selectedSegmentTintColor = #colorLiteral(red: 0.3883456886, green: 0.3880380392, blue: 0.4010984898, alpha: 1)
-        UISegmentedControl.appearance().backgroundColor = #colorLiteral(red: 0.09150201827, green: 0.1260478795, blue: 0.151537925, alpha: 1)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+        SetupNavigationBarAppearance()
+        setupSegmentedControl()
     }
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -69,8 +59,24 @@ struct ShowsCollectionView: View {
                             .foregroundColor(.white)
                     })
             )
-            .navigationBarBackButtonHidden(true)
         }
+    }
+
+    fileprivate func setupSegmentedControl() {
+        UISegmentedControl.appearance().selectedSegmentTintColor = #colorLiteral(red: 0.3883456886, green: 0.3880380392, blue: 0.4010984898, alpha: 1)
+        UISegmentedControl.appearance().backgroundColor = #colorLiteral(red: 0.09150201827, green: 0.1260478795, blue: 0.151537925, alpha: 1)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+    }
+
+    fileprivate func SetupNavigationBarAppearance() {
+        coloredNavAppearance.configureWithOpaqueBackground()
+        coloredNavAppearance.backgroundColor = #colorLiteral(red: 0.1285548806, green: 0.1735598147, blue: 0.1902512908, alpha: 1)
+        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+
+        UINavigationBar.appearance().standardAppearance = coloredNavAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
     }
 }
 

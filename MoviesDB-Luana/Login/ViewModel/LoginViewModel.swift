@@ -15,7 +15,6 @@ class LoginViewModel: ObservableObject {
     @Published var isValid: Bool = false
     @Published var userNameError: String?
     @Published var passwordError: String?
-    @Published var shouldAskPermission: Bool = false
     @Published var requestToken: String?
 
     private var cancellableSet: Set<AnyCancellable> = []
