@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB1C33EF261B778A00F3C5E1 /* LoginButtonContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EC261B778900F3C5E1 /* LoginButtonContent.swift */; };
+		EB1C33EF261B778A00F3C5E1 /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */; };
 		EB1C33F0261B778A00F3C5E1 /* LoginTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */; };
 		EB1C33F1261B778A00F3C5E1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EE261B778A00F3C5E1 /* LoginView.swift */; };
 		EB8E246D2613CE2E009D9409 /* MoviesDB_LuanaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */; };
@@ -48,7 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EB1C33EC261B778900F3C5E1 /* LoginButtonContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonContent.swift; sourceTree = "<group>"; };
+		EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextFieldModifier.swift; sourceTree = "<group>"; };
 		EB1C33EE261B778A00F3C5E1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EB8E24692613CE2E009D9409 /* MoviesDB-Luana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MoviesDB-Luana.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +164,7 @@
 		EB8E24A02613DFDB009D9409 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EB1C33EC261B778900F3C5E1 /* LoginButtonContent.swift */,
+				EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */,
 				EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */,
 				EB1C33EE261B778A00F3C5E1 /* LoginView.swift */,
 			);
@@ -406,7 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB1C33EF261B778A00F3C5E1 /* LoginButtonContent.swift in Sources */,
+				EB1C33EF261B778A00F3C5E1 /* LoginButtonStyle.swift in Sources */,
 				EB8E25112614F6CE009D9409 /* LoginModel.swift in Sources */,
 				EB8E24E72614C241009D9409 /* ShowDetail.swift in Sources */,
 				EB1C33F1261B778A00F3C5E1 /* LoginView.swift in Sources */,

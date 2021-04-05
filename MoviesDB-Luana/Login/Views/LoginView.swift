@@ -27,14 +27,12 @@ struct LoginView: View {
                     .modifier(LoginTextFieldModifier())
                 SecureField("Password", text: $viewModel.password)
                     .modifier(LoginTextFieldModifier())
-                Button(action: {
+                Button("Log in") {
                     viewModel.login {
                         pushActive.toggle()
                     }
-                }) {
-                    LoginButtonContent()
                 }
-                
+                .buttonStyle( LoginButtonStyle())
                 .disabled(!viewModel.isValid)
                 .opacity(viewModel.isValid ? 1 : 0.5)
                 .fullScreenCover(isPresented: $pushActive, content: {
