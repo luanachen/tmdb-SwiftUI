@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ShowCellViewModel: Identifiable {
+class ShowCellViewModel: Identifiable, ObservableObject {
     let show = Show(name: "Movie name",
                     popularity: 7.5,
                     id: 1,

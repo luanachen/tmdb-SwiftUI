@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShowCell: View {
-    var viewModel: ShowCellViewModel
+    @StateObject var viewModel: ShowCellViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 11) {
