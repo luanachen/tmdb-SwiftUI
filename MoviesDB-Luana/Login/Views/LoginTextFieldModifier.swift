@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginTextFieldModifier: ViewModifier {
     func body(content: Content) -> some View {
-        return content
+        content
             .padding()
             .foregroundColor(.black)
             .background(Color.white)

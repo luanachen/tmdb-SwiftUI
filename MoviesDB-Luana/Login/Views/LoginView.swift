@@ -9,9 +9,7 @@ import Combine
 import SwiftUI
 
 struct LoginView: View {
-    @Environment(\.openURL) var openURL
-
-    @ObservedObject var viewModel = LoginViewModel()
+    @StateObject var viewModel = LoginViewModel()
 
     @State var pushActive = false
 
@@ -57,7 +55,7 @@ struct LoginView: View {
                 viewModel.shouldAskPermission.sink { askPermission in
                     if askPermission {
                         if let token = viewModel.requestToken, let url = URL(string: "https://www.themoviedb.org/authenticate/\(token)?redirect_to=MoviesDB-Luana://") {
-                            openURL(url)
+                            UIApplication.shared.open(url)
                         }
                     }
                 }
