@@ -9,11 +9,11 @@ enum LoginEndpoint {
 
 extension LoginEndpoint: EndpointType {
     private var apiKey: String {
-        return "d26d586dbfdee567a78223358cc2512d"
+        "d26d586dbfdee567a78223358cc2512d"
     }
 
     var base: String {
-        return "https://api.themoviedb.org"
+        "https://api.themoviedb.org"
     }
 
     var path: String {
