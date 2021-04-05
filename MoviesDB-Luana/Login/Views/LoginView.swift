@@ -16,6 +16,8 @@ struct LoginView: View {
     @State var pushActive = false
 
     var body: some View {
+        var cancellable = Set<AnyCancellable>()
+
         ZStack {
             Color(#colorLiteral(red: 0.0320315659, green: 0.08327228576, blue: 0.1042201295, alpha: 1)).edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
@@ -28,8 +30,15 @@ struct LoginView: View {
                 SecureField("Password", text: $viewModel.password)
                     .modifier(LoginTextFieldModifier())
                 Button("Log in") {
-                    viewModel.login {
-                        pushActive.toggle()
+                    viewModel.login()
+
+                    DispatchQueue.main.async {
+                        viewModel.pushActive.sink { shouldPush in
+                            if shouldPush {
+                                pushActive.toggle()
+                            }
+                        }
+                        .store(in: &cancellable)
                     }
                 }
                 .buttonStyle( LoginButtonStyle())
@@ -42,10 +51,17 @@ struct LoginView: View {
             .padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 80))
         }
         .onAppear(perform: {
-            viewModel.fetchRequestToken {
-                if let token = viewModel.requestToken, let url = URL(string: "https://www.themoviedb.org/authenticate/\(token)?redirect_to=MoviesDB-Luana://") {
-                    openURL(url)
+            viewModel.fetchRequestToken()
+
+            DispatchQueue.main.async {
+                viewModel.shouldAskPermission.sink { askPermission in
+                    if askPermission {
+                        if let token = viewModel.requestToken, let url = URL(string: "https://www.themoviedb.org/authenticate/\(token)?redirect_to=MoviesDB-Luana://") {
+                            openURL(url)
+                        }
+                    }
                 }
+                .store(in: &cancellable)
             }
         })
     }

@@ -17,36 +17,12 @@ class LoginViewModel: ObservableObject {
     @Published var passwordError: String?
     @Published var requestToken: String?
 
+    let shouldAskPermission = PassthroughSubject<Bool, Never>()
+    let pushActive = PassthroughSubject<Bool, Never>()
+
     private var cancellableSet: Set<AnyCancellable> = []
 
     private var repository = LoginRepository()
-
-    init() {
-        setupPublishers()
-    }
-
-    private func setupPublishers() {
-        Publishers.CombineLatest(validUserNamePublisher, validPasswordPublisher)
-            .dropFirst()
-            .sink { userNameError, passwordError in
-                self.isValid = userNameError == nil && passwordError == nil
-            }
-            .store(in: &cancellableSet)
-
-        validUserNamePublisher
-            .dropFirst()
-            .sink { userNameError in
-                self.userNameError = userNameError
-            }
-            .store(in: &cancellableSet)
-
-        validPasswordPublisher
-            .dropFirst()
-            .sink { passwordError in
-                self.passwordError = passwordError
-            }
-            .store(in: &cancellableSet)
-    }
 
     private var validUserNamePublisher: AnyPublisher<String?, Never> {
         $username
@@ -76,7 +52,34 @@ class LoginViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
 
-    func fetchRequestToken(completion: @escaping () -> Void) {
+    init() {
+        setupPublishers()
+    }
+
+    private func setupPublishers() {
+        Publishers.CombineLatest(validUserNamePublisher, validPasswordPublisher)
+            .dropFirst()
+            .sink { userNameError, passwordError in
+                self.isValid = userNameError == nil && passwordError == nil
+            }
+            .store(in: &cancellableSet)
+
+        validUserNamePublisher
+            .dropFirst()
+            .sink { userNameError in
+                self.userNameError = userNameError
+            }
+            .store(in: &cancellableSet)
+
+        validPasswordPublisher
+            .dropFirst()
+            .sink { passwordError in
+                self.passwordError = passwordError
+            }
+            .store(in: &cancellableSet)
+    }
+
+    func fetchRequestToken() {
         repository.requestToken()
             .sink { response in
                 switch response {
@@ -87,12 +90,12 @@ class LoginViewModel: ObservableObject {
                 }
             } receiveValue: { data in
                 self.requestToken = data.requestToken
-                completion()
+                self.shouldAskPermission.send(true)
             }
             .store(in: &cancellableSet)
     }
 
-    func login(completion: @escaping () -> Void) {
+    func login() {
         let model = LoginModel(username: username, password: password, requestToken: requestToken!)
         repository.loginWithUser(login: model)
             .sink { response in
@@ -105,7 +108,7 @@ class LoginViewModel: ObservableObject {
             } receiveValue: { data in
                 self.requestToken = data
                 self.repository.saveUserSession(requestToken: self.requestToken!)
-                completion()
+                self.pushActive.send(true)
             }
             .store(in: &cancellableSet)
     }
