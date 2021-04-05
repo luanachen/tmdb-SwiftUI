@@ -11,11 +11,13 @@ class LoginRepository: APIClient {
     }
 
     func saveUserSession(requestToken: String) {
-        sessionStoreManager.saveUserSession(requestToken: requestToken)
+        let data = Data(from: requestToken)
+        let _ = sessionStoreManager.save(key: "requestToken", data: data)
     }
 
     func getUserSession() -> String? {
-       return sessionStoreManager.getUserSession()
+        let value = sessionStoreManager.load(key: "requestToken")
+        return value?.to(type: String.self)
     }
 
     func requestToken(completion: @escaping (Result<Authentication, APIError>) -> Void) {
