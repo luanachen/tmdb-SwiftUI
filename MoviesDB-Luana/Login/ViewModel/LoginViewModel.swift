@@ -76,35 +76,37 @@ class LoginViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
 
-    func login(completion: @escaping () -> Void) {
-        loginWith(username: username, password: password, completion: completion)
-    }
-
     func fetchRequestToken(completion: @escaping () -> Void) {
-        repository.requestToken { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let auth):
-                self.requestToken = auth.requestToken
+        repository.requestToken()
+            .sink { response in
+                switch response {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    break
+                }
+            } receiveValue: { data in
+                self.requestToken = data.requestToken
                 completion()
             }
-        }
+            .store(in: &cancellableSet)
     }
 
-    private func loginWith(username: String, password: String, completion: @escaping () -> Void) {
-        guard let requestToken = requestToken else { return }
-        let model = LoginModel(username: username, password: password, requestToken: requestToken)
-        repository.loginWithUser(login: model) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let auth):
-                self?.requestToken = auth.requestToken
-                self?.repository.saveUserSession(requestToken: requestToken)
+    func login(completion: @escaping () -> Void) {
+        let model = LoginModel(username: username, password: password, requestToken: requestToken!)
+        repository.loginWithUser(login: model)
+            .sink { response in
+                switch response {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    break
+                }
+            } receiveValue: { data in
+                self.requestToken = data
+                self.repository.saveUserSession(requestToken: self.requestToken!)
                 completion()
             }
-        }
+            .store(in: &cancellableSet)
     }
 }

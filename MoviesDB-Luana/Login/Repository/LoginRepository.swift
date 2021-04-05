@@ -1,8 +1,9 @@
+import Combine
 import Foundation
 import NetworkHelper
 
 class LoginRepository: APIClient {
-    var session: URLSession = URLSession.shared
+    let session: URLSession = URLSession.shared
 
     let sessionStoreManager: SessionStoreManager
 
@@ -20,7 +21,35 @@ class LoginRepository: APIClient {
         return value?.to(type: String.self)
     }
 
-    func requestToken(completion: @escaping (Result<Authentication, APIError>) -> Void) {
+    func requestToken() -> AnyPublisher<Authentication, Error> {
+        Future { seal in
+            self.requestToken { result in
+                switch result {
+                case .failure(let error):
+                    seal(.failure(error))
+                case .success(let response):
+                    seal(.success(response))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
+    func loginWithUser(login: LoginModel) -> AnyPublisher<String, Error> {
+        Future { seal in
+            self.loginWithUser(login: login) { result in
+                switch result {
+                case .failure(let error):
+                    seal(.failure(error))
+                case .success(let response):
+                    seal(.success(response.requestToken))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
+    private func requestToken(completion: @escaping (Result<Authentication, APIError>) -> Void) {
         let endPoint = LoginEndpoint.requestToken
         var request = endPoint.request
         request.httpMethod = HTTPMethod.get.rawValue
@@ -31,7 +60,7 @@ class LoginRepository: APIClient {
         }, completion: completion)
     }
 
-    func loginWithUser(login: LoginModel, completion: @escaping (Result<Authentication, APIError>) -> Void) {
+    private func loginWithUser(login: LoginModel, completion: @escaping (Result<Authentication, APIError>) -> Void) {
         guard var request = LoginEndpoint.loginWithUser.postRequest(parameters: login, headers: []) else { return }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         fetch(with: request, decode: { json in
@@ -39,15 +68,4 @@ class LoginRepository: APIClient {
             return result
         }, completion: completion)
     }
-
-    func requestSessionId(requestToken: String, completion: @escaping (Result<SessionId, APIError>) -> Void) {
-        let requestToken = RequestToken(requestToken: requestToken)
-        guard var request = LoginEndpoint.requestSession.postRequest(parameters: requestToken, headers: []) else { return }
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        fetch(with: request, decode: { json in
-            guard let result = json as? SessionId else { return nil }
-            return result
-        }, completion: completion)
-    }
-
 }
