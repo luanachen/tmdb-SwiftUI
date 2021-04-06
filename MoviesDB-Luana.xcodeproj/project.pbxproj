@@ -10,6 +10,7 @@
 		EB1C33EF261B778A00F3C5E1 /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */; };
 		EB1C33F0261B778A00F3C5E1 /* LoginTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */; };
 		EB1C33F1261B778A00F3C5E1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EE261B778A00F3C5E1 /* LoginView.swift */; };
+		EB8C0528261CA405006B0B48 /* MovieDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8C0527261CA405006B0B48 /* MovieDBError.swift */; };
 		EB8E246D2613CE2E009D9409 /* MoviesDB_LuanaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */; };
 		EB8E24712613CE31009D9409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8E24702613CE31009D9409 /* Assets.xcassets */; };
 		EB8E24742613CE31009D9409 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8E24732613CE31009D9409 /* Preview Assets.xcassets */; };
@@ -25,7 +26,6 @@
 		EB8E250F2614F6CE009D9409 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E250C2614F6CE009D9409 /* LoginRepository.swift */; };
 		EB8E25102614F6CE009D9409 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E250D2614F6CE009D9409 /* LoginEndpoint.swift */; };
 		EB8E25112614F6CE009D9409 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E250E2614F6CE009D9409 /* LoginModel.swift */; };
-		EB8E251B2614F9E1009D9409 /* requestToken.json in Resources */ = {isa = PBXBuildFile; fileRef = EB8E251A2614F9E1009D9409 /* requestToken.json */; };
 		EB8E252F2614FE74009D9409 /* SessionStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E252E2614FE74009D9409 /* SessionStoreManager.swift */; };
 		EB8E2538261509F7009D9409 /* NetworkHelper in Frameworks */ = {isa = PBXBuildFile; productRef = EB8E2537261509F7009D9409 /* NetworkHelper */; };
 /* End PBXBuildFile section */
@@ -51,6 +51,7 @@
 		EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextFieldModifier.swift; sourceTree = "<group>"; };
 		EB1C33EE261B778A00F3C5E1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EB8C0527261CA405006B0B48 /* MovieDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBError.swift; sourceTree = "<group>"; };
 		EB8E24692613CE2E009D9409 /* MoviesDB-Luana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MoviesDB-Luana.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDB_LuanaApp.swift; sourceTree = "<group>"; };
 		EB8E24702613CE31009D9409 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		EB8E250C2614F6CE009D9409 /* LoginRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		EB8E250D2614F6CE009D9409 /* LoginEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		EB8E250E2614F6CE009D9409 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		EB8E251A2614F9E1009D9409 /* requestToken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = requestToken.json; sourceTree = "<group>"; };
 		EB8E252E2614FE74009D9409 /* SessionStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,7 +239,6 @@
 		EB8E250B2614F6AB009D9409 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				EB8E25192614F9B0009D9409 /* Responses */,
 				EB8E250D2614F6CE009D9409 /* LoginEndpoint.swift */,
 				EB8E250C2614F6CE009D9409 /* LoginRepository.swift */,
 			);
@@ -254,18 +253,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		EB8E25192614F9B0009D9409 /* Responses */ = {
-			isa = PBXGroup;
-			children = (
-				EB8E251A2614F9E1009D9409 /* requestToken.json */,
-			);
-			path = Responses;
-			sourceTree = "<group>";
-		};
 		EB8E252D2614FE74009D9409 /* SessionManager */ = {
 			isa = PBXGroup;
 			children = (
 				EB8E252E2614FE74009D9409 /* SessionStoreManager.swift */,
+				EB8C0527261CA405006B0B48 /* MovieDBError.swift */,
 			);
 			path = SessionManager;
 			sourceTree = "<group>";
@@ -380,7 +372,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB8E24742613CE31009D9409 /* Preview Assets.xcassets in Resources */,
-				EB8E251B2614F9E1009D9409 /* requestToken.json in Resources */,
 				EB8E24712613CE31009D9409 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +410,7 @@
 				EB8E24C12613EFBF009D9409 /* LoginViewModel.swift in Sources */,
 				EB8E24F02614CF31009D9409 /* ShowCell.swift in Sources */,
 				EB8E24E62614C241009D9409 /* Show.swift in Sources */,
+				EB8C0528261CA405006B0B48 /* MovieDBError.swift in Sources */,
 				EB8E24E82614C241009D9409 /* ShowList.swift in Sources */,
 				EB8E246D2613CE2E009D9409 /* MoviesDB_LuanaApp.swift in Sources */,
 			);

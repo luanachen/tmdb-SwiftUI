@@ -16,9 +16,7 @@ class LoginViewModel: ObservableObject {
     @Published var userNameError: String?
     @Published var passwordError: String?
     @Published var requestToken: String?
-
-    let shouldAskPermission = PassthroughSubject<Bool, Never>()
-    let pushActive = PassthroughSubject<Bool, Never>()
+    @Published var pushActive: Bool = false
 
     private var cancellableSet: Set<AnyCancellable> = []
 
@@ -79,37 +77,34 @@ class LoginViewModel: ObservableObject {
             .store(in: &cancellableSet)
     }
 
-    func fetchRequestToken() {
-        repository.requestToken()
-            .sink { response in
-                switch response {
-                case .failure(let error):
-                    print(error)
-                case .finished:
-                    break
-                }
-            } receiveValue: { data in
-                self.requestToken = data.requestToken
-                self.shouldAskPermission.send(true)
-            }
-            .store(in: &cancellableSet)
-    }
-
     func login() {
-        let model = LoginModel(username: username, password: password, requestToken: requestToken!)
-        repository.loginWithUser(login: model)
-            .sink { response in
-                switch response {
-                case .failure(let error):
-                    print(error)
-                case .finished:
-                    break
+        // Request token
+        repository.requestToken()
+            .flatMap { [weak self] requestToken -> AnyPublisher<String, Error> in
+                guard let self = self else {
+                    return Fail(error: MovieDBError.selfNotFound).eraseToAnyPublisher()
                 }
-            } receiveValue: { data in
-                self.requestToken = data
-                self.repository.saveUserSession(requestToken: self.requestToken!)
-                self.pushActive.send(true)
+
+                let model = LoginModel(username: self.username, password: self.password, requestToken: requestToken.requestToken)
+
+                // Validate request token with login
+                return self.repository.loginWithUser(login: model)
+            }
+            .flatMap { [weak self] requestToken -> AnyPublisher<SessionId, Error> in
+                guard let self = self else {
+                    return Fail(error: MovieDBError.selfNotFound).eraseToAnyPublisher()
+                }
+
+                // Request Session id with token
+                return self.repository.requestSession(requestToken: requestToken)
+            }
+            .sink { [weak self] error in
+                // TODO: Add Alert for error
+                print("error")
+            } receiveValue: { sessionId in
+                self.repository.saveUserSession(sessionId: sessionId.sessionId)
+                self.pushActive.toggle()
             }
             .store(in: &cancellableSet)
-    }
+        }
 }

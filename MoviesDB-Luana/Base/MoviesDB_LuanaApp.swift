@@ -13,7 +13,7 @@ struct MoviesDB_LuanaApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if let _ = sessionManager.load(key: "requestToken") {
+            if let _ = sessionManager.load(key: "sessionId") {
                 ShowsCollectionView()
             } else {
                 LoginView()

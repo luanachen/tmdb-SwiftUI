@@ -11,11 +11,7 @@ import SwiftUI
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
 
-    @State var pushActive = false
-
     var body: some View {
-        var cancellable = Set<AnyCancellable>()
-
         ZStack {
             Color(#colorLiteral(red: 0.0320315659, green: 0.08327228576, blue: 0.1042201295, alpha: 1)).edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
@@ -29,39 +25,16 @@ struct LoginView: View {
                     .modifier(LoginTextFieldModifier())
                 Button("Log in") {
                     viewModel.login()
-
-                    DispatchQueue.main.async {
-                        viewModel.pushActive.sink { shouldPush in
-                            if shouldPush {
-                                pushActive.toggle()
-                            }
-                        }
-                        .store(in: &cancellable)
-                    }
                 }
                 .buttonStyle( LoginButtonStyle())
                 .disabled(!viewModel.isValid)
                 .opacity(viewModel.isValid ? 1 : 0.5)
-                .fullScreenCover(isPresented: $pushActive, content: {
+                .fullScreenCover(isPresented: $viewModel.pushActive, content: {
                     ShowsCollectionView()
                 })
             }
             .padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 80))
         }
-        .onAppear(perform: {
-            viewModel.fetchRequestToken()
-
-            DispatchQueue.main.async {
-                viewModel.shouldAskPermission.sink { askPermission in
-                    if askPermission {
-                        if let token = viewModel.requestToken, let url = URL(string: "https://www.themoviedb.org/authenticate/\(token)?redirect_to=MoviesDB-Luana://") {
-                            UIApplication.shared.open(url)
-                        }
-                    }
-                }
-                .store(in: &cancellable)
-            }
-        })
     }
 }
 

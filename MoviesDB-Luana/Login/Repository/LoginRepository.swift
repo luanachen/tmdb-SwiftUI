@@ -11,20 +11,26 @@ class LoginRepository: APIClient {
         self.sessionStoreManager = sessionStoreManager
     }
 
-    func saveUserSession(requestToken: String) {
-        let data = Data(from: requestToken)
-        let _ = sessionStoreManager.save(key: "requestToken", data: data)
+    func saveUserSession(sessionId: String) {
+        let data = Data(from: sessionId)
+        let _ = sessionStoreManager.save(key: "sessionId", data: data)
     }
 
     func getUserSession() -> String? {
-        let value = sessionStoreManager.load(key: "requestToken")
+        let value = sessionStoreManager.load(key: "sessionId")
         return value?.to(type: String.self)
     }
 
     func requestToken() -> AnyPublisher<Authentication, Error> {
-        Future { seal in
-            self.requestToken { result in
-                switch result {
+        let endPoint = LoginEndpoint.requestToken
+        var request = endPoint.request
+        request.httpMethod = HTTPMethod.get.rawValue
+
+        return Future { seal in
+            self.fetch(with: request) { json in
+                return json as? Authentication
+            } completion: { response in
+                switch response {
                 case .failure(let error):
                     seal(.failure(error))
                 case .success(let response):
@@ -36,9 +42,13 @@ class LoginRepository: APIClient {
     }
 
     func loginWithUser(login: LoginModel) -> AnyPublisher<String, Error> {
-        Future { seal in
-            self.loginWithUser(login: login) { result in
-                switch result {
+        var request = LoginEndpoint.loginWithUser.postRequest(parameters: login, headers: [])!
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        return Future { seal in
+            self.fetch(with: request) { json in
+                return json as? Authentication
+            } completion: { response in
+                switch response {
                 case .failure(let error):
                     seal(.failure(error))
                 case .success(let response):
@@ -49,23 +59,23 @@ class LoginRepository: APIClient {
         .eraseToAnyPublisher()
     }
 
-    private func requestToken(completion: @escaping (Result<Authentication, APIError>) -> Void) {
-        let endPoint = LoginEndpoint.requestToken
-        var request = endPoint.request
-        request.httpMethod = HTTPMethod.get.rawValue
+    func requestSession(requestToken: String) -> AnyPublisher<SessionId, Error> {
+        let model = RequestToken(requestToken: requestToken)
+        var postRequest = LoginEndpoint.requestSession.postRequest(parameters: model, headers: [])!
+        postRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        fetch(with: request, decode: { json in
-            guard let result = json as? Authentication else { return nil }
-            return result
-        }, completion: completion)
-    }
-
-    private func loginWithUser(login: LoginModel, completion: @escaping (Result<Authentication, APIError>) -> Void) {
-        guard var request = LoginEndpoint.loginWithUser.postRequest(parameters: login, headers: []) else { return }
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        fetch(with: request, decode: { json in
-            guard let result = json as? Authentication else { return nil }
-            return result
-        }, completion: completion)
+        return Future { seal in
+            self.fetch(with: postRequest) { json in
+                return json as? SessionId
+            } completion: { response in
+                switch response {
+                case .failure(let error):
+                    seal(.failure(error))
+                case .success(let response):
+                    seal(.success(response))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }
