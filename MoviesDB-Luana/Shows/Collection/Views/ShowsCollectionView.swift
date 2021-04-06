@@ -7,13 +7,11 @@
 
 import SwiftUI
 
-let data = (1...100).map { "Item \($0)" }
-
 struct ShowsCollectionView: View {
 
-    @State private var selectedShowType = "Popular"
-    var showTypes = ["Popular", "Top Rated", "On TV", "Airing Today"]
-    
+    @State private var selectedShowType = ShowTypes.popular
+    @State private var showDetail = false
+
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -21,7 +19,10 @@ struct ShowsCollectionView: View {
 
     let coloredNavAppearance = UINavigationBarAppearance()
 
-    init() {
+    @ObservedObject var viewModel: ShowsCollectionViewModel
+
+    init(viewModel: ShowsCollectionViewModel = ShowsCollectionViewModel()) {
+        self.viewModel = viewModel
         SetupNavigationBarAppearance()
         setupSegmentedControl()
     }
@@ -30,19 +31,31 @@ struct ShowsCollectionView: View {
         NavigationView {
             VStack {
                 Picker("shows", selection: $selectedShowType) {
-                    ForEach(showTypes, id: \.self) {
-                        Text($0)
+                    ForEach(ShowTypes.allCases, id: \.self) {
+                        Text($0.rawValue)
                             .font(.system(size: 13))
                     }
                 }
+                .onChange(of: selectedShowType, perform: { value in
+                    viewModel.didSelectedSegmented(value: value.rawValue)
+                })
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(EdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24))
 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 8) {
-                        ForEach(data, id: \.self) { item in
-                            let viewModel = ShowCellViewModel()
-                            ShowCell(viewModel: viewModel)
+                        ForEach(viewModel.shows, id: \.id) { item in
+                            let viewModel = ShowCellViewModel(show: item)
+
+                            NavigationLink(
+                                destination: ShowDetailView(show: viewModel.show),
+                                isActive: $showDetail,
+                                label: {
+                                    ShowCell(viewModel: viewModel)
+                                })
+                                .onTapGesture {
+                                    showDetail.toggle()
+                                }
                         }
                     }
                 }
@@ -60,6 +73,9 @@ struct ShowsCollectionView: View {
                     })
             )
         }
+        .onAppear(perform: {
+            viewModel.didSelectedSegmented(value: ShowTypes.popular.rawValue)
+        })
     }
 
     fileprivate func setupSegmentedControl() {
