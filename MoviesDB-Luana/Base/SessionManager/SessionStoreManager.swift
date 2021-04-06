@@ -32,11 +32,7 @@ class SessionStoreManager {
 
         let status: OSStatus = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
 
-        if status == noErr {
-            return dataTypeRef as! Data?
-        } else {
-            return nil
-        }
+        return status == noErr ? dataTypeRef as? Data : nil
     }
 }
 
@@ -48,6 +44,6 @@ extension Data {
     }
 
     func to<T>(type: T.Type) -> T {
-        return self.withUnsafeBytes { $0.load(as: T.self) }
+        self.withUnsafeBytes { $0.load(as: T.self) }
     }
 }
