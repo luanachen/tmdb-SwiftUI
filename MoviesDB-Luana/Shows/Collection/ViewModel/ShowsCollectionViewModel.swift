@@ -37,22 +37,7 @@ class ShowsCollectionViewModel: ObservableObject {
         return items
     }
 
-    func didSelectedSegmented(value: String) {
-        switch value {
-        case "Popular":
-            fetchShowsForShow(type: .popular)
-        case "Top Rated":
-            fetchShowsForShow(type: .topRated)
-        case "On TV":
-            fetchShowsForShow(type: .onTv)
-        case "Airing today":
-            fetchShowsForShow(type: .airingToday)
-        default:
-            break
-        }
-    }
-
-    private func fetchShowsForShow(type: ShowTypes) {
+    func fetchShowsForShow(type: ShowTypes) {
         switch type {
         case .popular:
             fetchShowsForShow(endpoint: .popularTVShows)

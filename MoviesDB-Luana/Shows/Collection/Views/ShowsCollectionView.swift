@@ -35,7 +35,8 @@ struct ShowsCollectionView: View {
                     }
                 }
                 .onChange(of: selectedShowType, perform: { value in
-                    viewModel.didSelectedSegmented(value: value.rawValue)
+                    viewModel.fetchShowsForShow(type: value)
+
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(EdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24))
@@ -72,12 +73,12 @@ struct ShowsCollectionView: View {
             )
         }
         .onAppear(perform: {
-            viewModel.didSelectedSegmented(value: ShowTypes.popular.rawValue)
+            viewModel.fetchShowsForShow(type: .popular)
         })
         .alert(isPresented: $viewModel.showAlert) {
             Alert(title: Text("Loading error."),
                   dismissButton: .default(Text("Try again"), action: {
-                    viewModel.didSelectedSegmented(value: ShowTypes.popular.rawValue)
+                    viewModel.fetchShowsForShow(type: .popular)
                   }))
         }
     }
