@@ -17,6 +17,7 @@ class LoginViewModel: ObservableObject {
     @Published var passwordError: String?
     @Published var requestToken: String?
     @Published var pushActive: Bool = false
+    @Published var showAlert: Bool = false
 
     private var cancellableSet: Set<AnyCancellable> = []
 
@@ -99,12 +100,11 @@ class LoginViewModel: ObservableObject {
                 return self.repository.requestSession(requestToken: requestToken)
             }
             .sink { [weak self] error in
-                // TODO: Add Alert for error
-                print("error")
+                self?.showAlert.toggle()
             } receiveValue: { sessionId in
                 self.repository.saveUserSession(sessionId: sessionId.sessionId)
                 self.pushActive.toggle()
             }
             .store(in: &cancellableSet)
-        }
+    }
 }

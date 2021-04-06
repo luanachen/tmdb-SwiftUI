@@ -35,6 +35,11 @@ struct LoginView: View {
             }
             .padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 80))
         }
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text("Login Error."),
+                  message: Text("Please try again."),
+                  dismissButton: .default(Text("Ok")))
+        }
     }
 }
 
