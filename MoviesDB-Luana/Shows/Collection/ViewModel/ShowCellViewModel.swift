@@ -29,7 +29,8 @@ class ShowCellViewModel: Identifiable, ObservableObject {
         let endpoint = ShowsEndpoints.image(show.posterPath)
         guard let url = URL(string: endpoint.request.url?.absoluteString ?? "") else { return }
         imageManager.loadImage(url: url)
-        imageManager.$retrievedImage.sink { image in
+        imageManager.$retrievedImage
+            .sink { image in
             image.map { image in
                 DispatchQueue.main.async {
                     self.image = image

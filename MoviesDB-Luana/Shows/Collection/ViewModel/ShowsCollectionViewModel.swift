@@ -20,7 +20,9 @@ class ShowsCollectionViewModel: ObservableObject {
     @Published var shows: [Show] = []
     @Published var errorMessage: String?
     @Published var selectedShow: Show?
+    @Published var showAlert: Bool = false
 
+    private var cancellableSet: Set<AnyCancellable> = []
     private var repository: ShowsRepositoryProtocol
 
     init(repository: ShowsRepositoryProtocol = ShowsRepository()) {
@@ -64,14 +66,19 @@ class ShowsCollectionViewModel: ObservableObject {
     }
 
     private func fetchShowsForShow(endpoint: ShowsEndpoints) {
-        repository.fetchShowList(endpoint: endpoint) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.errorMessage = error.localizedDescription
-            case .success(let shows):
-                self?.shows = shows.results
+        repository.fetchShowList(endpoint: endpoint)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error)
+                    self.showAlert.toggle()
+                }
+            } receiveValue: { showList in
+                self.shows = showList.results
             }
-        }
+            .store(in: &cancellableSet)
     }
 
     func didSelectRow(_ row: Int) {

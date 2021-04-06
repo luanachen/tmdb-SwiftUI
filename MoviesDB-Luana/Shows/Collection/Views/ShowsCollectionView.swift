@@ -9,17 +9,15 @@ import SwiftUI
 
 struct ShowsCollectionView: View {
 
+    @ObservedObject var viewModel: ShowsCollectionViewModel
+
     @State private var selectedShowType = ShowTypes.popular
     @State private var showDetail = false
 
-    let columns = [
+    private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-
-    let coloredNavAppearance = UINavigationBarAppearance()
-
-    @ObservedObject var viewModel: ShowsCollectionViewModel
 
     init(viewModel: ShowsCollectionViewModel = ShowsCollectionViewModel()) {
         self.viewModel = viewModel
@@ -76,6 +74,12 @@ struct ShowsCollectionView: View {
         .onAppear(perform: {
             viewModel.didSelectedSegmented(value: ShowTypes.popular.rawValue)
         })
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text("Loading error."),
+                  dismissButton: .default(Text("Try again"), action: {
+                    viewModel.didSelectedSegmented(value: ShowTypes.popular.rawValue)
+                  }))
+        }
     }
 
     fileprivate func setupSegmentedControl() {
@@ -86,6 +90,7 @@ struct ShowsCollectionView: View {
     }
 
     fileprivate func SetupNavigationBarAppearance() {
+        let coloredNavAppearance = UINavigationBarAppearance()
         coloredNavAppearance.configureWithOpaqueBackground()
         coloredNavAppearance.backgroundColor = #colorLiteral(red: 0.1285548806, green: 0.1735598147, blue: 0.1902512908, alpha: 1)
         coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
