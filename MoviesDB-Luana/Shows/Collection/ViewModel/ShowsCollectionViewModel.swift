@@ -65,8 +65,4 @@ class ShowsCollectionViewModel: ObservableObject {
             }
             .store(in: &cancellableSet)
     }
-
-    func didSelectRow(_ row: Int) {
-        selectedShow = shows[row]
-    }
 }

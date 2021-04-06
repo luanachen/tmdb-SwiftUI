@@ -12,7 +12,6 @@ struct ShowsCollectionView: View {
     @ObservedObject var viewModel: ShowsCollectionViewModel
 
     @State private var selectedShowType = ShowTypes.popular
-    @State private var showDetail = false
 
     private let columns = [
         GridItem(.flexible()),
@@ -45,16 +44,7 @@ struct ShowsCollectionView: View {
                     LazyVGrid(columns: columns, spacing: 8) {
                         ForEach(viewModel.shows, id: \.id) { item in
                             let viewModel = ShowCellViewModel(show: item)
-
-                            NavigationLink(
-                                destination: ShowDetailView(show: viewModel.show),
-                                isActive: $showDetail,
-                                label: {
-                                    ShowCell(viewModel: viewModel)
-                                })
-                                .onTapGesture {
-                                    showDetail.toggle()
-                                }
+                            ShowCell(viewModel: viewModel)
                         }
                     }
                 }
