@@ -19,7 +19,7 @@ struct Credit: Decodable {
     let cast: [Cast]
 }
 
-struct Cast: Decodable {
+struct Cast: Decodable, Hashable {
     let name: String
     let profilePath: String
 }

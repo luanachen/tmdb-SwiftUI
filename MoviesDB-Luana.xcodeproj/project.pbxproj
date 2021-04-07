@@ -134,8 +134,8 @@
 		EB8C0545261CCB31006B0B48 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				EB8C0552261CCB71006B0B48 /* View */,
 				EB8C0547261CCB31006B0B48 /* Model */,
+				EB8C0552261CCB71006B0B48 /* View */,
 				EBABB80E261DFA50002A4FBD /* ViewModel */,
 			);
 			path = Detail;

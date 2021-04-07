@@ -38,7 +38,7 @@ struct DetailContentView: View {
                     .foregroundColor(.white)
 
                 HStack {
-                    Text("Created by...")
+                    Text(viewModel.creatorsName ?? "")
                         .font(.system(size: 12))
                         .foregroundColor(.white)
                         .fontWeight(.bold)
@@ -55,7 +55,7 @@ struct DetailContentView: View {
 
                 HStack {
                     AsyncImage(
-                        url: viewModel.url,
+                        url: viewModel.posterUrl,
                         placeholder: {
                             Text("Loading ...")
                                 .fixedSize()
@@ -92,6 +92,7 @@ struct DetailContentView: View {
 
                 Spacer()
 
+                // TODO: hide if no casts
                 HStack {
                     Text("Cast")
                         .font(.system(size: 18))
@@ -104,10 +105,10 @@ struct DetailContentView: View {
 
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 23) {
-                    ForEach(0...10, id: \.self) { index in
+                    ForEach(viewModel.castName.indices, id: \.self) { indice in
                         VStack {
                             AsyncImage(
-                                url: viewModel.url,
+                                url: viewModel.castURL[indice],
                                 placeholder: {
                                     Text("Loading ...")
                                         .fixedSize()
@@ -118,22 +119,25 @@ struct DetailContentView: View {
                             .aspectRatio(contentMode: .fit)
                             .clipShape(Circle())
 
-                            Text("actor name")
+                            Text(viewModel.castName[indice])
                                 .font(.system(size: 12))
                                 .foregroundColor(.white)
                         }
                     }
                 }
+                .frame(height: 133)
                 .fixedSize()
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             }
             .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 0))
 
-
             Spacer()
         }
         .background(Color(#colorLiteral(red: 0.1437062621, green: 0.1527246833, blue: 0.1829863489, alpha: 1)))
         .cornerRadius(15)
+        .onAppear(perform: {
+            viewModel.fetchShowDetail()
+        })
     }
 }
 

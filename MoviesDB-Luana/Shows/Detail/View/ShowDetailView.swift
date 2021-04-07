@@ -14,7 +14,7 @@ struct ShowDetailView: View {
         ScrollView {
             VStack {
                 AsyncImage(
-                    url: viewModel.url,
+                    url: viewModel.posterUrl,
                     placeholder: {
                         Text("Loading ...")
                             .fixedSize()
