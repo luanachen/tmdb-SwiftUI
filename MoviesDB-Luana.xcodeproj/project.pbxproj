@@ -127,7 +127,6 @@
 			children = (
 				EB8C053D261CC906006B0B48 /* ShowsEndpoints.swift */,
 				EB8C053E261CC906006B0B48 /* ShowsRepository.swift */,
-				EBABB805261D06B6002A4FBD /* ImageLoader+AsyncImage */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -270,6 +269,7 @@
 		EB8E24CF2614BE74009D9409 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				EBABB805261D06B6002A4FBD /* ImageLoader+AsyncImage */,
 				EB8E252D2614FE74009D9409 /* SessionManager */,
 				EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */,
 			);

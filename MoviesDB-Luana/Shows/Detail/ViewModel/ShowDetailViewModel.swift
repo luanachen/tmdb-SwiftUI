@@ -20,5 +20,4 @@ class ShowDetailViewModel: ObservableObject {
     init(show: Show) {
         self.show = show
     }
-    
 }

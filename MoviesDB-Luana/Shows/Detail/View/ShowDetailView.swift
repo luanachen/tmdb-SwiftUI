@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct ShowDetailView: View {
-    @ObservedObject var viewModel: ShowDetailViewModel
-
-    init(viewModel: ShowDetailViewModel) {
-        self.viewModel = viewModel
-    }
+    @StateObject var viewModel: ShowDetailViewModel
 
     var body: some View {
         ScrollView {

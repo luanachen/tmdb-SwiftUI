@@ -11,86 +11,99 @@ struct DetailContentView: View {
     @StateObject var viewModel: ShowDetailViewModel
 
     var body: some View {
-        VStack(spacing: 12) {
-            HStack {
-                Text("Summary")
-                    .font(.system(size: 18))
-                    .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
-                    .fontWeight(.bold)
-                Spacer()
-            }
+        VStack {
+            VStack(spacing: 12) {
+                HStack {
+                    Text("Summary")
+                        .font(.system(size: 18))
+                        .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
+                        .fontWeight(.bold)
+                    Spacer()
+                }
 
-            HStack {
-                Text(viewModel.show.name)
-                    .font(.system(size: 18))
-                    .foregroundColor(.white)
-                Spacer()
-                Button("") {}
-                    .background(
-                        Image(systemName: "heart")
-                            .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
-                    )
-            }
+                HStack {
+                    Text(viewModel.show.name)
+                        .font(.system(size: 18))
+                        .foregroundColor(.white)
+                    Spacer()
+                    Button("") {}
+                        .background(
+                            Image(systemName: "heart")
+                                .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
+                        )
+                }
 
-            Text(viewModel.show.overview)
-                .font(.system(size: 12))
-                .foregroundColor(.white)
-
-            HStack {
-                Text("Created by...")
+                Text(viewModel.show.overview)
                     .font(.system(size: 12))
                     .foregroundColor(.white)
-                    .fontWeight(.bold)
-                Spacer()
-            }
 
-            HStack {
-                Text("Last Season")
-                    .font(.system(size: 18))
-                    .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
-                    .fontWeight(.bold)
-                Spacer()
-            }
-
-            HStack {
-                AsyncImage(
-                    url: viewModel.url,
-                    placeholder: {
-                        Text("Loading ...")
-                            .fixedSize()
-                    },
-                    image: { Image(uiImage: $0).resizable() }
-                )
-                .aspectRatio(131/181, contentMode: .fit)
-
-                VStack {
+                HStack {
                     Text("Created by...")
-                        .font(.system(size: 14))
+                        .font(.system(size: 12))
                         .foregroundColor(.white)
                         .fontWeight(.bold)
+                    Spacer()
+                }
 
-                    Text("Nov 10, 19")
-                        .font(.system(size: 10))
+                HStack {
+                    Text("Last Season")
+                        .font(.system(size: 18))
                         .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
-                        .fontWeight(.semibold)
+                        .fontWeight(.bold)
+                    Spacer()
+                }
 
-                    Button("View All Seasons") {
-                        print("View All Seasons")
+                HStack {
+                    AsyncImage(
+                        url: viewModel.url,
+                        placeholder: {
+                            Text("Loading ...")
+                                .fixedSize()
+                        },
+                        image: { Image(uiImage: $0).resizable() }
+                    )
+                    .frame(width: 131, height: 183)
+                    .aspectRatio(contentMode: .fit)
+
+                    Spacer()
+
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Season 4")
+                            .font(.system(size: 14))
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+
+                        Text("Nov 10, 19")
+                            .font(.system(size: 10))
+                            .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
+                            .fontWeight(.semibold)
+
+                        Button("View All Seasons") {
+                            print("View All Seasons")
+                        }
+                        .padding()
+                        .frame(height: 30)
+                        .font(.system(size: 10, weight: .regular))
+                        .background(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
+                        .foregroundColor(.white)
+                        .cornerRadius(5)
                     }
-                    .buttonStyle(LoginButtonStyle())
+                }
+
+                Spacer()
+
+                HStack {
+                    Text("Cast")
+                        .font(.system(size: 18))
+                        .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
+                        .fontWeight(.bold)
+                    Spacer()
                 }
             }
-
-            HStack {
-                Text("Cast")
-                    .font(.system(size: 18))
-                    .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
-                    .fontWeight(.bold)
-                Spacer()
-            }
+            .padding(EdgeInsets(top: 20, leading: 24, bottom: 0, trailing: 24))
 
             ScrollView(.horizontal) {
-                LazyHStack {
+                LazyHStack(spacing: 23) {
                     ForEach(0...10, id: \.self) { index in
                         VStack {
                             AsyncImage(
@@ -102,6 +115,7 @@ struct DetailContentView: View {
                                 image: { Image(uiImage: $0).resizable() }
                             )
                             .frame(width: 100, height: 100)
+                            .aspectRatio(contentMode: .fit)
                             .clipShape(Circle())
 
                             Text("actor name")
@@ -110,12 +124,14 @@ struct DetailContentView: View {
                         }
                     }
                 }
+                .fixedSize()
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             }
+            .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 0))
+
 
             Spacer()
         }
-        .padding()
-        .frame(maxWidth: .infinity)
         .background(Color(#colorLiteral(red: 0.1437062621, green: 0.1527246833, blue: 0.1829863489, alpha: 1)))
         .cornerRadius(15)
     }
