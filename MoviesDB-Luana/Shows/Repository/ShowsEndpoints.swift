@@ -13,7 +13,7 @@ enum ShowsEndpoints {
 
 extension ShowsEndpoints: EndpointType {
     private var apiKey: String {
-        return "d26d586dbfdee567a78223358cc2512d"
+        "d26d586dbfdee567a78223358cc2512d"
     }
 
     var base: String {
@@ -45,7 +45,6 @@ extension ShowsEndpoints: EndpointType {
         case .cast(let tvId): return "/\(tvId)/credits"
         }
     }
-
 
     var queryItems: [URLQueryItem]? {
         switch self {

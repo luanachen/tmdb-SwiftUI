@@ -43,6 +43,9 @@ struct ShowCell: View {
             .background(Color(#colorLiteral(red: 0.1024496332, green: 0.1580232382, blue: 0.1789078116, alpha: 1)))
             .cornerRadius(15)
         }
+        .onAppear(perform: {
+            viewModel.fetchImage()
+        })
     }
 }
 

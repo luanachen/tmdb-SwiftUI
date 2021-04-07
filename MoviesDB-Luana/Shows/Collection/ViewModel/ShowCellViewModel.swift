@@ -10,19 +10,18 @@ import Foundation
 import UIKit
 
 class ShowCellViewModel: Identifiable, ObservableObject {
-    let show: Show
-    let id: UUID
-
     @Published var image: UIImage?
 
     private let imageManager = ImageManager()
 
     private var cancellableSet: Set<AnyCancellable> = []
 
+    let show: Show
+    let id: UUID
+
     init(show: Show) {
         self.id = UUID()
         self.show = show
-        fetchImage()
     }
 
     func fetchImage() {

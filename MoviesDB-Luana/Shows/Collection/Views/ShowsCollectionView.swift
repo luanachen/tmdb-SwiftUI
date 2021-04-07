@@ -9,17 +9,14 @@ import SwiftUI
 
 struct ShowsCollectionView: View {
 
-    @ObservedObject var viewModel: ShowsCollectionViewModel
-
-    @State private var selectedShowType = ShowTypes.popular
+    @StateObject var viewModel = ShowsCollectionViewModel()
 
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
 
-    init(viewModel: ShowsCollectionViewModel = ShowsCollectionViewModel()) {
-        self.viewModel = viewModel
+    init() {
         SetupNavigationBarAppearance()
         setupSegmentedControl()
     }
@@ -27,13 +24,13 @@ struct ShowsCollectionView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Picker("shows", selection: $selectedShowType) {
+                Picker("shows", selection: $viewModel.selectedShowType) {
                     ForEach(ShowTypes.allCases, id: \.self) {
                         Text($0.rawValue)
                             .font(.system(size: 13))
                     }
                 }
-                .onChange(of: selectedShowType, perform: { value in
+                .onChange(of: viewModel.selectedShowType, perform: { value in
                     viewModel.fetchShowsForShow(type: value)
 
                 })
@@ -65,7 +62,7 @@ struct ShowsCollectionView: View {
         .onAppear(perform: {
             viewModel.fetchShowsForShow(type: .popular)
         })
-        .alert(isPresented: $viewModel.showAlert) {
+        .alert(isPresented: $viewModel.isShowingAlert) {
             Alert(title: Text("Loading error."),
                   dismissButton: .default(Text("Try again"), action: {
                     viewModel.fetchShowsForShow(type: .popular)
