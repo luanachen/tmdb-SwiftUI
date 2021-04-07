@@ -99,8 +99,13 @@ class LoginViewModel: ObservableObject {
                 // Request Session id with token
                 return self.repository.requestSession(requestToken: requestToken)
             }
-            .sink { [weak self] error in
-                self?.showAlert.toggle()
+            .sink { [weak self] response in
+                switch response {
+                case .finished:
+                    return
+                case .failure:
+                    self?.showAlert.toggle()
+                }
             } receiveValue: { sessionId in
                 self.repository.saveUserSession(sessionId: sessionId.sessionId)
                 self.pushActive.toggle()
