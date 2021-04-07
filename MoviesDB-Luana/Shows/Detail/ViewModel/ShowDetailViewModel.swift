@@ -1,26 +1,24 @@
 //
-//  ShowCellViewModel.swift
+//  ShowDetailViewModel.swift
 //  MoviesDB-Luana
 //
-//  Created by Luana Chen Chih Jun on 31/03/21.
+//  Created by Luana Chen Chih Jun on 07/04/21.
 //
 
-import Combine
 import Foundation
-import SwiftUI
 import UIKit
 
-class ShowCellViewModel: Identifiable, ObservableObject {
-    let show: Show
-    let id: UUID
+class ShowDetailViewModel: ObservableObject {
+
+    @Published var show: Show
+
     var url: URL {
         let endpoint = ShowsEndpoints.image(show.posterPath)
         return URL(string: endpoint.request.url?.absoluteString ?? "")!
     }
 
     init(show: Show) {
-        self.id = UUID()
         self.show = show
     }
+    
 }
-

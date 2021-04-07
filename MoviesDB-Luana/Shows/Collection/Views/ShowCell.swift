@@ -12,11 +12,20 @@ struct ShowCell: View {
     @StateObject var viewModel: ShowCellViewModel
 
     var body: some View {
-        NavigationLink( destination: ShowDetailView(show: viewModel.show)) {
+        let detailViewModel = ShowDetailViewModel(show: viewModel.show)
+
+        NavigationLink(destination: ShowDetailView(viewModel: detailViewModel)) {
             VStack(spacing: 11) {
-                Image(uiImage: viewModel.image ?? UIImage())
-                    .resizable()
-                    .aspectRatio(0.7, contentMode: .fit)
+                AsyncImage(
+                    url: viewModel.url,
+                    placeholder: {
+                        Text("Loading ...")
+                            .fixedSize()
+                    },
+                    image: { Image(uiImage: $0).resizable() }
+                )
+                .aspectRatio(0.7, contentMode: .fit)
+
                 HStack {
                     Text(viewModel.show.name)
                         .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
