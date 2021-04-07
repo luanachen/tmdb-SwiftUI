@@ -7,19 +7,14 @@
 
 import SwiftUI
 
-let data = (1...100).map { "Item \($0)" }
-
 struct ShowsCollectionView: View {
 
-    @State private var selectedShowType = "Popular"
-    var showTypes = ["Popular", "Top Rated", "On TV", "Airing Today"]
-    
-    let columns = [
+    @StateObject var viewModel = ShowsCollectionViewModel()
+
+    private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-
-    let coloredNavAppearance = UINavigationBarAppearance()
 
     init() {
         SetupNavigationBarAppearance()
@@ -29,19 +24,23 @@ struct ShowsCollectionView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Picker("shows", selection: $selectedShowType) {
-                    ForEach(showTypes, id: \.self) {
-                        Text($0)
+                Picker("shows", selection: $viewModel.selectedShowType) {
+                    ForEach(ShowTypes.allCases, id: \.self) {
+                        Text($0.rawValue)
                             .font(.system(size: 13))
                     }
                 }
+                .onChange(of: viewModel.selectedShowType, perform: { value in
+                    viewModel.fetchShowsForShow(type: value)
+
+                })
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(EdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24))
 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 8) {
-                        ForEach(data, id: \.self) { item in
-                            let viewModel = ShowCellViewModel()
+                        ForEach(viewModel.shows, id: \.id) { item in
+                            let viewModel = ShowCellViewModel(show: item)
                             ShowCell(viewModel: viewModel)
                         }
                     }
@@ -60,6 +59,15 @@ struct ShowsCollectionView: View {
                     })
             )
         }
+        .onAppear(perform: {
+            viewModel.fetchShowsForShow(type: .popular)
+        })
+        .alert(isPresented: $viewModel.isShowingAlert) {
+            Alert(title: Text("Loading error."),
+                  dismissButton: .default(Text("Try again"), action: {
+                    viewModel.fetchShowsForShow(type: .popular)
+                  }))
+        }
     }
 
     fileprivate func setupSegmentedControl() {
@@ -70,6 +78,7 @@ struct ShowsCollectionView: View {
     }
 
     fileprivate func SetupNavigationBarAppearance() {
+        let coloredNavAppearance = UINavigationBarAppearance()
         coloredNavAppearance.configureWithOpaqueBackground()
         coloredNavAppearance.backgroundColor = #colorLiteral(red: 0.1285548806, green: 0.1735598147, blue: 0.1902512908, alpha: 1)
         coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
