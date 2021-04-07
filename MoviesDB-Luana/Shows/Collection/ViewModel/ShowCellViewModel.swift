@@ -13,8 +13,6 @@ import UIKit
 class ShowCellViewModel: Identifiable, ObservableObject {
     @Published var image: UIImage?
 
-    private let imageManager = ImageManager()
-
     private var cancellableSet: Set<AnyCancellable> = []
 
     let show: Show

@@ -17,7 +17,7 @@ struct ShowsCollectionView: View {
     ]
 
     init() {
-        SetupNavigationBarAppearance()
+        setupNavigationBarAppearance()
         setupSegmentedControl()
     }
 

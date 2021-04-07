@@ -13,7 +13,7 @@ struct AsyncImage<Placeholder: View>: View {
     private let placeholder: Placeholder
     private let image: (UIImage) -> Image
 
-    init(
+    init(   
         url: URL,
         @ViewBuilder placeholder: () -> Placeholder,
         @ViewBuilder image: @escaping (UIImage) -> Image = Image.init(uiImage:)
