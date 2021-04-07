@@ -20,21 +20,22 @@ class ShowsCollectionViewModel: ObservableObject {
     @Published var shows: [Show] = []
     @Published var errorMessage: String?
     @Published var selectedShow: Show?
-    @Published var showAlert: Bool = false
+    @Published var isShowingAlert: Bool = false
+    @Published var selectedShowType = ShowTypes.popular
 
-    private var cancellableSet: Set<AnyCancellable> = []
+    private var cancellableSet = Set<AnyCancellable>()
     private var repository: ShowsRepositoryProtocol
 
-    init(repository: ShowsRepositoryProtocol = ShowsRepository()) {
-        self.repository = repository
-    }
-
-    func segmentedControlItems() -> [String] {
+    var segmentedControlItems: [String] {
         var items = [String]()
         for showType in ShowTypes.allCases {
             items.append(showType.rawValue)
         }
         return items
+    }
+
+    init(repository: ShowsRepositoryProtocol = ShowsRepository()) {
+        self.repository = repository
     }
 
     func fetchShowsForShow(type: ShowTypes) {
@@ -58,7 +59,7 @@ class ShowsCollectionViewModel: ObservableObject {
                     break
                 case .failure(let error):
                     print(error)
-                    self.showAlert.toggle()
+                    self.isShowingAlert.toggle()
                 }
             } receiveValue: { showList in
                 self.shows = showList.results

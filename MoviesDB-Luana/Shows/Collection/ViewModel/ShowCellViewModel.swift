@@ -11,8 +11,15 @@ import SwiftUI
 import UIKit
 
 class ShowCellViewModel: Identifiable, ObservableObject {
+    @Published var image: UIImage?
+
+    private let imageManager = ImageManager()
+
+    private var cancellableSet: Set<AnyCancellable> = []
+
     let show: Show
     let id: UUID
+
     var url: URL {
         let endpoint = ShowsEndpoints.image(show.posterPath)
         return URL(string: endpoint.request.url?.absoluteString ?? "")!
