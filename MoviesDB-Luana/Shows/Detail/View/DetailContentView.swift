@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailContentView: View {
     @StateObject var viewModel: ShowDetailViewModel
+    @State var isFavorited: Bool = false
 
     var body: some View {
         VStack {
@@ -25,12 +26,15 @@ struct DetailContentView: View {
                     Text(viewModel.show.name)
                         .font(.system(size: 18))
                         .foregroundColor(.white)
-                    Spacer()
-                    Button("") {}
-                        .background(
-                            Image(systemName: "heart")
-                                .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
-                        )
+                    Spacer(minLength: 20)
+                    Button(action: {
+                        isFavorited.toggle()
+                    }, label: {
+                        Image(systemName: isFavorited ? "heart.fill" : "heart")
+                            .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
+                    })
+                    .frame(width: 24, height: 24)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 6))
                 }
 
                 Text(viewModel.show.overview)
@@ -92,9 +96,8 @@ struct DetailContentView: View {
 
                 Spacer()
 
-                // TODO: hide if no casts
                 HStack {
-                    Text("Cast")
+                    Text(viewModel.castName.isEmpty ? "" : "Cast")
                         .font(.system(size: 18))
                         .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
                         .fontWeight(.bold)
@@ -103,33 +106,37 @@ struct DetailContentView: View {
             }
             .padding(EdgeInsets(top: 20, leading: 24, bottom: 0, trailing: 24))
 
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 23) {
-                    ForEach(viewModel.castName.indices, id: \.self) { indice in
-                        VStack {
-                            AsyncImage(
-                                url: viewModel.castURL[indice],
-                                placeholder: {
-                                    Text("Loading ...")
-                                        .fixedSize()
-                                },
-                                image: { Image(uiImage: $0).resizable() }
-                            )
-                            .frame(width: 100, height: 100)
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(Circle())
+            if !viewModel.castName.isEmpty {
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 23) {
+                        ForEach(viewModel.castName.indices, id: \.self) { indice in
+                            VStack {
+                                AsyncImage(
+                                    url: viewModel.castURL[indice],
+                                    placeholder: {
+                                        Text("Loading ...")
+                                            .fixedSize()
+                                    },
+                                    image: {
+                                        Image(uiImage: $0)
+                                        .resizable()
+                                    }
+                                )
+                                .scaledToFit()
+                                .clipShape(Circle())
 
-                            Text(viewModel.castName[indice])
-                                .font(.system(size: 12))
-                                .foregroundColor(.white)
+                                Text(viewModel.castName[indice])
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
+                    .frame(height: 133)
+                    .fixedSize()
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                 }
-                .frame(height: 133)
-                .fixedSize()
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 0))
             }
-            .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 0))
 
             Spacer()
         }
@@ -138,6 +145,7 @@ struct DetailContentView: View {
         .onAppear(perform: {
             viewModel.fetchShowDetail()
         })
+        .coordinateSpace(name: "content")
     }
 }
 
