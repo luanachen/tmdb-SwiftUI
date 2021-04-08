@@ -38,6 +38,7 @@
 		EBABB7FE261D0503002A4FBD /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBABB7FD261D0503002A4FBD /* EnvironmentValues+ImageCache.swift */; };
 		EBABB80A261DFA4C002A4FBD /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBABB809261DFA4C002A4FBD /* ShowDetailViewModel.swift */; };
 		EBABB813261E1F8D002A4FBD /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBABB812261E1F8D002A4FBD /* DetailContentView.swift */; };
+		EBFA80B9261F84B400557E76 /* VotePreferenceViewSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFA80B8261F84B400557E76 /* VotePreferenceViewSetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		EBABB7FD261D0503002A4FBD /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
 		EBABB809261DFA4C002A4FBD /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
 		EBABB812261E1F8D002A4FBD /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
+		EBFA80B8261F84B400557E76 /* VotePreferenceViewSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotePreferenceViewSetter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			children = (
 				EB8C0546261CCB31006B0B48 /* ShowDetailView.swift */,
 				EBABB812261E1F8D002A4FBD /* DetailContentView.swift */,
+				EBFA80B8261F84B400557E76 /* VotePreferenceViewSetter.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				EB8C0528261CA405006B0B48 /* MovieDBError.swift in Sources */,
 				EB8E24E82614C241009D9409 /* ShowList.swift in Sources */,
 				EB8E246D2613CE2E009D9409 /* MoviesDB_LuanaApp.swift in Sources */,
+				EBFA80B9261F84B400557E76 /* VotePreferenceViewSetter.swift in Sources */,
 				EB8C0549261CCB31006B0B48 /* ShowDetailView.swift in Sources */,
 				EB8C0540261CC906006B0B48 /* ShowsEndpoints.swift in Sources */,
 			);

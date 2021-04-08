@@ -9,21 +9,22 @@ import SwiftUI
 
 struct ShowDetailView: View {
     @StateObject var viewModel: ShowDetailViewModel
+    @State private var rect = CGRect()
 
     var body: some View {
         GeometryReader { geo in
-        ScrollView {
-            VStack {
-                AsyncImage(
-                    url: viewModel.posterUrl,
-                    placeholder: {
-                        Text("Loading ...")
-                            .fixedSize()
-                    },
-                    image: { Image(uiImage: $0).resizable() }
-                )
-                .frame(height: 211)
-                .scaledToFit()
+            ScrollView {
+                VStack {
+                    AsyncImage(
+                        url: viewModel.posterUrl,
+                        placeholder: {
+                            Text("Loading ...")
+                                .fixedSize()
+                        },
+                        image: { Image(uiImage: $0).resizable() }
+                    )
+                    .frame(height: 211)
+                    .scaledToFit()
 
                     ZStack {
                         DetailContentView(viewModel: viewModel)
@@ -35,12 +36,20 @@ struct ShowDetailView: View {
                             .foregroundColor(Color.white)
                             .background(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
                             .clipShape(Circle())
-                            .offset(x: geo.frame(in: .global).minX+120,
-                                    y: -geo.frame(in: .global).midX-40)
+                            .offset(x: rect.minX-48,
+                                    y: -rect.midY)
+                            .background(VotePreferenceViewSetter())
                     }
+                    .coordinateSpace(name: "Zstack")
                     .offset(y: -50)
+                    .onPreferenceChange(VoteViewPreferenceKey.self) { preferences in
+                        for p in preferences {
+                            self.rect = p.rect
+                        }
+                    }
                 }
             }
+            .coordinateSpace(name: "scrollView")
         }
         .background(Color.black)
         .edgesIgnoringSafeArea(.all)
@@ -61,11 +70,11 @@ struct ShowDetailView_Previews: PreviewProvider {
 
 
         let _show = Show(name: "Movie name",
-                        popularity: 7.5,
-                        id: 1,
-                        voteAverage: 8.9,
-                        overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
-                        firstAirDate: "Aug 10, 2018", posterPath: "moviedb")
+                         popularity: 7.5,
+                         id: 1,
+                         voteAverage: 8.9,
+                         overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
+                         firstAirDate: "Aug 10, 2018", posterPath: "moviedb")
         let _viewModel = ShowDetailViewModel(show: _show)
         ShowDetailView(viewModel: _viewModel)
             .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro Max"))

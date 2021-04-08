@@ -145,7 +145,6 @@ struct DetailContentView: View {
         .onAppear(perform: {
             viewModel.fetchShowDetail()
         })
-        .coordinateSpace(name: "content")
     }
 }
 
