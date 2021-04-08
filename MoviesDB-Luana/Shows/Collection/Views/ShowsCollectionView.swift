@@ -17,7 +17,6 @@ struct ShowsCollectionView: View {
     ]
 
     init() {
-        setupNavigationBarAppearance()
         setupSegmentedControl()
     }
 
@@ -58,6 +57,7 @@ struct ShowsCollectionView: View {
                             .foregroundColor(.white)
                     })
             )
+            .preferredColorScheme(.dark)
         }
         .onAppear(perform: {
             viewModel.fetchShowsForShow(type: .popular)
@@ -75,17 +75,6 @@ struct ShowsCollectionView: View {
         UISegmentedControl.appearance().backgroundColor = #colorLiteral(red: 0.09150201827, green: 0.1260478795, blue: 0.151537925, alpha: 1)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-    }
-
-    fileprivate func setupNavigationBarAppearance() {
-        let coloredNavAppearance = UINavigationBarAppearance()
-        coloredNavAppearance.backgroundColor = #colorLiteral(red: 0.1285548806, green: 0.1735598147, blue: 0.1902512908, alpha: 1)
-        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-
-        UINavigationBar.appearance().standardAppearance = coloredNavAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
-        UINavigationBar.appearance().tintColor = .white
     }
 }
 

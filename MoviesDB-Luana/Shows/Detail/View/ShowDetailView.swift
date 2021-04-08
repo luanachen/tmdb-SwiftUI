@@ -9,24 +9,25 @@ import SwiftUI
 
 struct ShowDetailView: View {
     @StateObject var viewModel: ShowDetailViewModel
-    @State private var rect = CGRect()
 
     var body: some View {
         GeometryReader { geo in
             ScrollView {
                 VStack {
-                    AsyncImage(
-                        url: viewModel.posterUrl,
-                        placeholder: {
-                            Text("Loading ...")
-                                .fixedSize()
-                        },
-                        image: { Image(uiImage: $0).resizable() }
-                    )
-                    .frame(height: 211)
-                    .scaledToFit()
-
                     ZStack {
+                        AsyncImage(
+                            url: viewModel.posterUrl,
+                            placeholder: {
+                                Text("Loading ...")
+                                    .fixedSize()
+                            },
+                            image: { Image(uiImage: $0).resizable() }
+                        )
+                        .frame(height: 211)
+                        .scaledToFit()
+                    }
+
+                    ZStack(alignment: .topTrailing) {
                         DetailContentView(viewModel: viewModel)
                             .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 25))
 
@@ -36,20 +37,11 @@ struct ShowDetailView: View {
                             .foregroundColor(Color.white)
                             .background(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
                             .clipShape(Circle())
-                            .offset(x: rect.minX-48,
-                                    y: -rect.midY)
-                            .background(VotePreferenceViewSetter())
+                            .offset(x: -48, y: -20)
                     }
-                    .coordinateSpace(name: "Zstack")
                     .offset(y: -50)
-                    .onPreferenceChange(VoteViewPreferenceKey.self) { preferences in
-                        for p in preferences {
-                            self.rect = p.rect
-                        }
-                    }
                 }
             }
-            .coordinateSpace(name: "scrollView")
         }
         .background(Color.black)
         .edgesIgnoringSafeArea(.all)
