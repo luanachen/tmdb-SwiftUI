@@ -50,47 +50,50 @@ struct DetailContentView: View {
                 }
 
                 HStack {
-                    Text("Last Season")
+                    Text(viewModel.lastSeason != nil ? "Last Season" : "")
                         .font(.system(size: 18))
                         .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
                         .fontWeight(.bold)
                     Spacer()
                 }
 
-                HStack {
-                    AsyncImage(
-                        url: viewModel.posterUrl,
-                        placeholder: {
-                            Text("Loading ...")
-                                .fixedSize()
-                        },
-                        image: { Image(uiImage: $0).resizable() }
-                    )
-                    .frame(width: 131, height: 183)
-                    .aspectRatio(contentMode: .fit)
+                HStack(spacing: 33) {
+                    if let url = viewModel.lastSeasonPosterURL {
+                        AsyncImage(
+                            url: url,
+                            placeholder: {
+                                Text("Loading ...")
+                                    .fixedSize()
+                            },
+                            image: { Image(uiImage: $0).resizable() }
+                        )
+                        .aspectRatio(0.7, contentMode: .fit)
+                    }
 
                     Spacer()
 
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Season 4")
+                        Text(viewModel.lastSeason ?? "")
                             .font(.system(size: 14))
                             .foregroundColor(.white)
                             .fontWeight(.bold)
 
-                        Text("Nov 10, 19")
+                        Text(viewModel.lastSeasonDate ?? "")
                             .font(.system(size: 10))
                             .foregroundColor(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
                             .fontWeight(.semibold)
 
-                        Button("View All Seasons") {
-                            print("View All Seasons")
+                        if viewModel.lastSeason != nil {
+                            Button("View All Seasons") {
+                                print("View All Seasons")
+                            }
+                            .padding()
+                            .frame(height: 30)
+                            .font(.system(size: 10, weight: .regular))
+                            .background(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
                         }
-                        .padding()
-                        .frame(height: 30)
-                        .font(.system(size: 10, weight: .regular))
-                        .background(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
-                        .foregroundColor(.white)
-                        .cornerRadius(5)
                     }
                 }
 

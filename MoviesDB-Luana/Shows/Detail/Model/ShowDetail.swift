@@ -2,7 +2,7 @@ import Foundation
 
 struct ShowDetail: Decodable {
     let createdBy: [CreatedBy]
-    let seasons: [Season]
+    let seasons: [Season]?
 }
 
 struct CreatedBy: Decodable {
@@ -10,9 +10,9 @@ struct CreatedBy: Decodable {
 }
 
 struct Season: Decodable {
-    let posterPath: String
-    let seasonNumber: Int
-    let airDate: String
+    let posterPath: String?
+    let seasonNumber: Int?
+    let airDate: String?
 }
 
 struct Credit: Decodable {

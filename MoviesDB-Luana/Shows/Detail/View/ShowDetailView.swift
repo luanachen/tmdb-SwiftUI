@@ -24,7 +24,7 @@ struct ShowDetailView: View {
                             image: { Image(uiImage: $0).resizable() }
                         )
                         .frame(height: 211)
-                        .scaledToFit()
+                        .aspectRatio(contentMode: .fit)
                     }
 
                     ZStack(alignment: .topTrailing) {

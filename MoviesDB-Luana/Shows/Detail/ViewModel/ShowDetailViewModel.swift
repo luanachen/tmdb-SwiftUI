@@ -14,6 +14,9 @@ class ShowDetailViewModel: ObservableObject {
     @Published var creatorsName: String?
     @Published var castName = [String]()
     @Published var castURL = [URL]()
+    @Published var lastSeason: String?
+    @Published var lastSeasonDate: String?
+    @Published var lastSeasonPosterURL: URL?
 
     private var cancellableSet = Set<AnyCancellable>()
     private var repository: ShowsRepositoryProtocol
@@ -41,6 +44,20 @@ class ShowDetailViewModel: ObservableObject {
                 if !detail.createdBy.isEmpty {
                     self.creatorsName = "Created by " + detail.createdBy.map({ $0.name }).joined(separator: ", ")
                 }
+                if let lasSeason = detail.seasons?.last?.seasonNumber {
+                    self.lastSeason = "Season " + lasSeason.description
+                }
+                if let seasonDate = detail.seasons?.last?.airDate {
+                    self.lastSeasonDate = seasonDate.description
+                }
+                if let seasonPath = detail.seasons?.last?.posterPath {
+                    let endpoint = ShowsEndpoints.image(seasonPath)
+                    let url = endpoint.request.url
+                    self.lastSeasonPosterURL = url
+                } else {
+                    self.lastSeasonPosterURL = self.posterUrl
+                }
+
                 self.fetchCasts()
             }
             .store(in: &cancellableSet)
