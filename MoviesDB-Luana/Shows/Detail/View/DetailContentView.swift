@@ -17,7 +17,7 @@ struct DetailContentView: View {
                 HStack {
                     Text("Summary")
                         .font(.system(size: 18))
-                        .foregroundColor(Color.init("tmdb-green"))
+                        .foregroundColor(Color("tmdb-green"))
                         .fontWeight(.bold)
                     Spacer()
                 }
@@ -31,7 +31,7 @@ struct DetailContentView: View {
                         isFavorited.toggle()
                     }, label: {
                         Image(systemName: isFavorited ? "heart.fill" : "heart")
-                            .foregroundColor(Color.init("tmdb-green"))
+                            .foregroundColor(Color("tmdb-green"))
                     })
                     .frame(width: 24, height: 24)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 6))
@@ -52,7 +52,7 @@ struct DetailContentView: View {
                 HStack {
                     Text(viewModel.lastSeason != nil ? "Last Season" : "")
                         .font(.system(size: 18))
-                        .foregroundColor(Color.init("tmdb-green"))
+                        .foregroundColor(Color("tmdb-green"))
                         .fontWeight(.bold)
                     Spacer()
                 }
@@ -80,7 +80,7 @@ struct DetailContentView: View {
 
                         Text(viewModel.lastSeasonDate ?? "")
                             .font(.system(size: 10))
-                            .foregroundColor(Color.init("tmdb-green"))
+                            .foregroundColor(Color("tmdb-green"))
                             .fontWeight(.semibold)
 
                         if viewModel.lastSeason != nil {
@@ -90,7 +90,7 @@ struct DetailContentView: View {
                             .padding()
                             .frame(height: 30)
                             .font(.system(size: 10, weight: .regular))
-                            .background(Color.init("tmdb-green"))
+                            .background(Color("tmdb-green"))
                             .foregroundColor(.white)
                             .cornerRadius(5)
                         }
@@ -102,7 +102,7 @@ struct DetailContentView: View {
                 HStack {
                     Text(viewModel.castName.isEmpty ? "" : "Cast")
                         .font(.system(size: 18))
-                        .foregroundColor(Color.init("tmdb-green"))
+                        .foregroundColor(Color("tmdb-green"))
                         .fontWeight(.bold)
                     Spacer()
                 }
@@ -143,7 +143,7 @@ struct DetailContentView: View {
 
             Spacer()
         }
-        .background(Color.init("tmdb-grey"))
+        .background(Color("tmdb-grey"))
         .cornerRadius(15)
         .onAppear(perform: {
             viewModel.fetchShowDetail()

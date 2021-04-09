@@ -36,7 +36,7 @@ struct ShowDetailView: View {
                             .font(.system(size: 18, weight: .semibold))
                             .frame(width: 40, height: 40)
                             .foregroundColor(Color.white)
-                            .background(Color.init("tmdb-green"))
+                            .background(Color("tmdb-green"))
                             .clipShape(Circle())
                             .offset(x: -48, y: -20)
                     }
@@ -44,7 +44,7 @@ struct ShowDetailView: View {
                 }
             }
         }
-        .background(Color.init("tmdb-backgroundColor"))
+        .background(Color("tmdb-backgroundColor"))
         .edgesIgnoringSafeArea(.all)
         .navigationBarTitle(Text(""), displayMode: .large)
     }

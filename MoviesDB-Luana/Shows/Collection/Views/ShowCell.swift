@@ -28,7 +28,7 @@ struct ShowCell: View {
 
                 HStack {
                     Text(viewModel.show.name)
-                        .foregroundColor(Color.init("tmdb-green"))
+                        .foregroundColor(Color("tmdb-green"))
                         .font(.system(size: 13, weight: .bold))
                     Spacer()
                 }
@@ -41,7 +41,7 @@ struct ShowCell: View {
                 }
                 .font(.system(size: 10, weight: .semibold))
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
-                .foregroundColor(Color.init("tmdb-green"))
+                .foregroundColor(Color("tmdb-green"))
                 Text(viewModel.show.overview)
                     .foregroundColor(.white)
                     .font(.system(size: 10))
@@ -49,7 +49,7 @@ struct ShowCell: View {
                     .frame(maxHeight: 56)
                 Spacer()
             }
-            .background(Color.init("tmdb-grey"))
+            .background(Color("tmdb-grey"))
             .cornerRadius(15)
         }
     }

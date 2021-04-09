@@ -47,7 +47,7 @@ struct ShowsCollectionView: View {
                 }
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
             }
-            .background(Color.init("tmdb-backgroundColor"))
+            .background(Color("tmdb-backgroundColor"))
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("TV Shows")
@@ -61,7 +61,7 @@ struct ShowsCollectionView: View {
             .toolbar(content: {
                 
             })
-            .modifier(NavigationBarModifier(backgroundColor: UIColor.init(named: "tmdb-grey")))
+            .modifier(NavigationBarModifier(backgroundColor: UIColor(named: "tmdb-grey")))
         }
         .onAppear(perform: {
             viewModel.fetchShowsForShow(type: .popular)
@@ -75,8 +75,8 @@ struct ShowsCollectionView: View {
     }
 
     fileprivate func setupSegmentedControl() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.init(named: "tmdb-light-grey")
-        UISegmentedControl.appearance().backgroundColor = UIColor.init(named: "tmdb-grey")
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "tmdb-light-grey")
+        UISegmentedControl.appearance().backgroundColor = UIColor(named: "tmdb-grey")
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
     }

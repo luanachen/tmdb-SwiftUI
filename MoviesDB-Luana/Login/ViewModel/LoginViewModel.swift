@@ -21,7 +21,7 @@ class LoginViewModel: ObservableObject {
 
     private var cancellableSet: Set<AnyCancellable> = []
 
-    private var repository = LoginRepository()
+    private var repository: LoginRepositoryProtocol
 
     private var validUserNamePublisher: AnyPublisher<String?, Never> {
         $username
@@ -51,7 +51,8 @@ class LoginViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
 
-    init() {
+    init(repository: LoginRepositoryProtocol = LoginRepository()) {
+        self.repository = repository
         setupPublishers()
     }
 

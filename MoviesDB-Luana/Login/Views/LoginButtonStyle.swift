@@ -14,7 +14,7 @@ struct LoginButtonStyle: ButtonStyle {
             .font(.system(size: 14, weight: .bold))
             .foregroundColor(.white)
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-            .background(Color.init("tmdb-green"))
+            .background(Color("tmdb-green"))
             .cornerRadius(5)
     }
 }
