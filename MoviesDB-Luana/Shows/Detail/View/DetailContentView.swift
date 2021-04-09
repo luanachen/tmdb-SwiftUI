@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailContentView: View {
     @StateObject var viewModel: ShowDetailViewModel
-    @State var isFavorited: Bool = false
+    @State var isMarkedAsFavorite: Bool = false
 
     var body: some View {
         VStack {
@@ -28,9 +28,9 @@ struct DetailContentView: View {
                         .foregroundColor(.white)
                     Spacer(minLength: 20)
                     Button(action: {
-                        isFavorited.toggle()
+                        isMarkedAsFavorite.toggle()
                     }, label: {
-                        Image(systemName: isFavorited ? "heart.fill" : "heart")
+                        Image(systemName: isMarkedAsFavorite ? "heart.fill" : "heart")
                             .foregroundColor(Color("tmdb-green"))
                     })
                     .frame(width: 24, height: 24)
