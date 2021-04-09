@@ -35,7 +35,7 @@ struct ShowDetailView: View {
                             .font(.system(size: 18, weight: .semibold))
                             .frame(width: 40, height: 40)
                             .foregroundColor(Color.white)
-                            .background(Color(#colorLiteral(red: 0.1378434002, green: 0.8040757179, blue: 0.3944021463, alpha: 1)))
+                            .background(Color.init("tmdb-green"))
                             .clipShape(Circle())
                             .offset(x: -48, y: -20)
                     }
@@ -43,7 +43,7 @@ struct ShowDetailView: View {
                 }
             }
         }
-        .background(Color.black)
+        .background(Color.init("tmdb-backgroundColor"))
         .edgesIgnoringSafeArea(.all)
     }
 }

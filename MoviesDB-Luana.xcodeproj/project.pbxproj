@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB0C549526208D5200272C3D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB0C549426208D5200272C3D /* Colors.xcassets */; };
 		EB1C33EF261B778A00F3C5E1 /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */; };
 		EB1C33F0261B778A00F3C5E1 /* LoginTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */; };
 		EB1C33F1261B778A00F3C5E1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EE261B778A00F3C5E1 /* LoginView.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB0C549426208D5200272C3D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextFieldModifier.swift; sourceTree = "<group>"; };
 		EB1C33EE261B778A00F3C5E1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				EB8E24BA2613EE5B009D9409 /* Login */,
 				EB8E24C82614BE50009D9409 /* Shows */,
 				EB8E24702613CE31009D9409 /* Assets.xcassets */,
+				EB0C549426208D5200272C3D /* Colors.xcassets */,
 				EB8E24752613CE31009D9409 /* Info.plist */,
 				EB8E24722613CE31009D9409 /* Preview Content */,
 			);
@@ -457,6 +460,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB0C549526208D5200272C3D /* Colors.xcassets in Resources */,
 				EB8E24742613CE31009D9409 /* Preview Assets.xcassets in Resources */,
 				EB8E24712613CE31009D9409 /* Assets.xcassets in Resources */,
 			);
