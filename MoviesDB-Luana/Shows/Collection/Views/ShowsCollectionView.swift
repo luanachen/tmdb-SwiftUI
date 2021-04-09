@@ -58,7 +58,10 @@ struct ShowsCollectionView: View {
                             .foregroundColor(.white)
                     })
             )
-            .preferredColorScheme(.dark)
+            .toolbar(content: {
+                
+            })
+            .modifier(NavigationBarModifier(backgroundColor: UIColor.init(named: "tmdb-grey")))
         }
         .onAppear(perform: {
             viewModel.fetchShowsForShow(type: .popular)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EB0C549526208D5200272C3D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB0C549426208D5200272C3D /* Colors.xcassets */; };
+		EB0C54A02620A32300272C3D /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0C549F2620A32300272C3D /* NavigationBarModifier.swift */; };
 		EB1C33EF261B778A00F3C5E1 /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */; };
 		EB1C33F0261B778A00F3C5E1 /* LoginTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */; };
 		EB1C33F1261B778A00F3C5E1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EE261B778A00F3C5E1 /* LoginView.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		EB0C549426208D5200272C3D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		EB0C549F2620A32300272C3D /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextFieldModifier.swift; sourceTree = "<group>"; };
 		EB1C33EE261B778A00F3C5E1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			children = (
 				EB8E24D02614BEB8009D9409 /* ShowsCollectionView.swift */,
 				EB8E24EF2614CF31009D9409 /* ShowCell.swift */,
+				EB0C549F2620A32300272C3D /* NavigationBarModifier.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				EB8E24F02614CF31009D9409 /* ShowCell.swift in Sources */,
 				EB8E24E62614C241009D9409 /* Show.swift in Sources */,
 				EBABB7EF261CFEA2002A4FBD /* ImageLoader.swift in Sources */,
+				EB0C54A02620A32300272C3D /* NavigationBarModifier.swift in Sources */,
 				EBABB7F9261D04CA002A4FBD /* ImageCache.swift in Sources */,
 				EB8C0528261CA405006B0B48 /* MovieDBError.swift in Sources */,
 				EB8E24E82614C241009D9409 /* ShowList.swift in Sources */,
