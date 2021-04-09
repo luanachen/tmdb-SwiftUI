@@ -196,9 +196,6 @@
 				EB8E24CF2614BE74009D9409 /* Base */,
 				EB8E24BA2613EE5B009D9409 /* Login */,
 				EB8E24C82614BE50009D9409 /* Shows */,
-				EB8E24702613CE31009D9409 /* Assets.xcassets */,
-				EB0C549426208D5200272C3D /* Colors.xcassets */,
-				EB8E24752613CE31009D9409 /* Info.plist */,
 				EB8E24722613CE31009D9409 /* Preview Content */,
 			);
 			path = "MoviesDB-Luana";
@@ -272,9 +269,12 @@
 		EB8E24CF2614BE74009D9409 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */,
+				EB8E24702613CE31009D9409 /* Assets.xcassets */,
+				EB0C549426208D5200272C3D /* Colors.xcassets */,
+				EB8E24752613CE31009D9409 /* Info.plist */,
 				EBABB805261D06B6002A4FBD /* ImageLoader+AsyncImage */,
 				EB8E252D2614FE74009D9409 /* SessionManager */,
-				EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -672,7 +672,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesDB-Luana/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "MoviesDB-Luana/Info.plist";
+				INFOPLIST_FILE = "MoviesDB-Luana/Base/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -693,7 +693,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesDB-Luana/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "MoviesDB-Luana/Info.plist";
+				INFOPLIST_FILE = "MoviesDB-Luana/Base/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
