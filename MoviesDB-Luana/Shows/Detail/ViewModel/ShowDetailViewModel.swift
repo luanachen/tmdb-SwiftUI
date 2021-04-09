@@ -17,6 +17,7 @@ class ShowDetailViewModel: ObservableObject {
     @Published var lastSeason: String?
     @Published var lastSeasonDate: String?
     @Published var lastSeasonPosterURL: URL?
+    @Published var isMarkedAsFavorite: Bool = false
 
     private var cancellableSet = Set<AnyCancellable>()
     private var repository: ShowsRepositoryProtocol
