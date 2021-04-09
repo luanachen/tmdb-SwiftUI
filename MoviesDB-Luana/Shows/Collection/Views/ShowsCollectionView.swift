@@ -58,9 +58,6 @@ struct ShowsCollectionView: View {
                             .foregroundColor(.white)
                     })
             )
-            .toolbar(content: {
-                
-            })
             .modifier(NavigationBarModifier(backgroundColor: UIColor(named: "tmdb-grey")))
         }
         .onAppear(perform: {
