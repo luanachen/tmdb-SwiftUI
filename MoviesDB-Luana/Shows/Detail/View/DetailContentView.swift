@@ -111,8 +111,9 @@ struct DetailContentView: View {
             if !viewModel.casts.isEmpty {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 23) {
-                        ForEach(viewModel.casts) { cast in
-                            if let imageUrl = URL(string: cast.profilePath) {
+                        ForEach(viewModel.casts.indices) { indice in
+                            let endpoint = ShowsEndpoints.image(viewModel.casts[indice].profilePath)
+                            if let imageUrl = URL(string: endpoint.request.url?.absoluteString ?? "") {
                                 VStack {
                                     AsyncImage(
                                         url: imageUrl,
@@ -128,7 +129,7 @@ struct DetailContentView: View {
                                     .scaledToFit()
                                     .clipShape(Circle())
 
-                                    Text(cast.name)
+                                    Text(viewModel.casts[indice].name)
                                         .font(.system(size: 12))
                                         .foregroundColor(.white)
                                 }
