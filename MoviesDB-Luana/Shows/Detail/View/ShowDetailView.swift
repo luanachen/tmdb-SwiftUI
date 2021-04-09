@@ -25,6 +25,7 @@ struct ShowDetailView: View {
                         )
                         .scaledToFill()
                         .frame(height: 211)
+                        .clipped()
                     }
 
                     ZStack(alignment: .topTrailing) {
