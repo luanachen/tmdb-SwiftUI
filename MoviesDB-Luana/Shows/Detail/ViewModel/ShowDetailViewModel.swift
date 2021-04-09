@@ -11,9 +11,8 @@ import Foundation
 class ShowDetailViewModel: ObservableObject {
 
     @Published var show: Show
+    @Published var casts = [Cast]()
     @Published var creatorsName: String?
-    @Published var castName = [String]()
-    @Published var castURL = [URL]()
     @Published var lastSeason: String?
     @Published var lastSeasonDate: String?
     @Published var lastSeasonPosterURL: URL?
@@ -74,12 +73,7 @@ class ShowDetailViewModel: ObservableObject {
                     print(error)
                 }
             } receiveValue: { credit in
-                self.castName = credit.cast.map({$0.name})
-
-                self.castURL = credit.cast.map({
-                    let endpoint = ShowsEndpoints.image($0.profilePath)
-                    return endpoint.request.url ?? URL(string: "")!
-                })
+                self.casts = credit.cast
             }
             .store(in: &cancellableSet)
     }

@@ -99,7 +99,7 @@ struct DetailContentView: View {
                 Spacer()
 
                 HStack {
-                    Text(viewModel.castName.isEmpty ? "" : "Cast")
+                    Text(viewModel.casts.isEmpty ? "" : "Cast")
                         .font(.system(size: 18))
                         .foregroundColor(Color("tmdb-green"))
                         .fontWeight(.bold)
@@ -108,28 +108,30 @@ struct DetailContentView: View {
             }
             .padding(EdgeInsets(top: 20, leading: 24, bottom: 0, trailing: 24))
 
-            if !viewModel.castName.isEmpty {
+            if !viewModel.casts.isEmpty {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 23) {
-                        ForEach(viewModel.castName.indices, id: \.self) { indice in
-                            VStack {
-                                AsyncImage(
-                                    url: viewModel.castURL[indice],
-                                    placeholder: {
-                                        Text("Loading ...")
-                                            .fixedSize()
-                                    },
-                                    image: {
-                                        Image(uiImage: $0)
-                                        .resizable()
-                                    }
-                                )
-                                .scaledToFit()
-                                .clipShape(Circle())
+                        ForEach(viewModel.casts, id: \.id) { cast in
+                            if let imageUrl = URL(string: cast.profilePath) {
+                                VStack {
+                                    AsyncImage(
+                                        url: imageUrl,
+                                        placeholder: {
+                                            Text("Loading ...")
+                                                .fixedSize()
+                                        },
+                                        image: {
+                                            Image(uiImage: $0)
+                                                .resizable()
+                                        }
+                                    )
+                                    .scaledToFit()
+                                    .clipShape(Circle())
 
-                                Text(viewModel.castName[indice])
-                                    .font(.system(size: 12))
-                                    .foregroundColor(.white)
+                                    Text(cast.name)
+                                        .font(.system(size: 12))
+                                        .foregroundColor(.white)
+                                }
                             }
                         }
                     }
