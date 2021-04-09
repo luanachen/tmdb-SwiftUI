@@ -11,7 +11,7 @@ import Foundation
 class ShowDetailViewModel: ObservableObject {
 
     @Published var show: Show
-    @Published var casts = [Cast]()
+    @Published var casts = [CastModel]()
     @Published var creatorsName: String?
     @Published var lastSeason: String?
     @Published var lastSeasonDate: String?
@@ -73,7 +73,10 @@ class ShowDetailViewModel: ObservableObject {
                     print(error)
                 }
             } receiveValue: { credit in
-                self.casts = credit.cast
+                credit.cast.forEach { cast in
+                    let model = CastModel(name: cast.name, profilePath: cast.profilePath)
+                    self.casts.append(model)
+                }
             }
             .store(in: &cancellableSet)
     }

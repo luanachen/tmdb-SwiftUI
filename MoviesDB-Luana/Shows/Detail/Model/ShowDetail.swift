@@ -23,3 +23,9 @@ struct Cast: Decodable {
     let name: String
     let profilePath: String
 }
+
+struct CastModel: Identifiable {
+    let id = UUID()
+    let name: String
+    let profilePath: String
+}
