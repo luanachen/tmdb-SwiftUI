@@ -2,7 +2,15 @@ import Combine
 import Foundation
 import NetworkHelper
 
-class LoginRepository: APIClient {
+protocol LoginRepositoryProtocol {
+    func saveUserSession(sessionId: String)
+    func getUserSession() -> String?
+    func requestToken() -> AnyPublisher<Authentication, Error>
+    func loginWithUser(login: LoginModel) -> AnyPublisher<String, Error>
+    func requestSession(requestToken: String) -> AnyPublisher<SessionId, Error>
+}
+
+class LoginRepository: APIClient, LoginRepositoryProtocol {
     let session: URLSession = URLSession.shared
 
     let sessionStoreManager: SessionStoreManager
