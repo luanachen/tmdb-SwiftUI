@@ -23,8 +23,8 @@ struct ShowDetailView: View {
                             },
                             image: { Image(uiImage: $0).resizable() }
                         )
+                        .scaledToFill()
                         .frame(height: 211)
-                        .aspectRatio(contentMode: .fit)
                     }
 
                     ZStack(alignment: .topTrailing) {
@@ -45,6 +45,7 @@ struct ShowDetailView: View {
         }
         .background(Color.init("tmdb-backgroundColor"))
         .edgesIgnoringSafeArea(.all)
+        .navigationBarTitle(Text(""), displayMode: .large)
     }
 }
 

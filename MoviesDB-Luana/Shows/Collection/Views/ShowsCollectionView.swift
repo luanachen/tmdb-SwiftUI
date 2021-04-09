@@ -18,6 +18,7 @@ struct ShowsCollectionView: View {
 
     init() {
         setupSegmentedControl()
+        UINavigationBar.appearance().tintColor = .white
     }
 
     var body: some View {
