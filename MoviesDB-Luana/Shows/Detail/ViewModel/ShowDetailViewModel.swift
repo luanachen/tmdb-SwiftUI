@@ -11,7 +11,7 @@ import Foundation
 class ShowDetailViewModel: ObservableObject {
 
     @Published var show: Show
-    @Published var casts = [CastModel]()
+    @Published var casts: [CastModel] = []
     @Published var creatorsName: String?
     @Published var lastSeason: String?
     @Published var lastSeasonDate: String?
