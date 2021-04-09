@@ -13,7 +13,7 @@ struct LoginView: View {
 
     var body: some View {
         ZStack {
-            Color.init("tmdb-grey").edgesIgnoringSafeArea(.all)
+            Color.init("tmdb-backgroundColor").edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
                 Image("moviedb")
                     .resizable()
