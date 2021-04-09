@@ -111,7 +111,7 @@ struct DetailContentView: View {
             if !viewModel.casts.isEmpty {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 23) {
-                        ForEach(viewModel.casts, id: \.id) { cast in
+                        ForEach(viewModel.casts) { cast in
                             if let imageUrl = URL(string: cast.profilePath) {
                                 VStack {
                                     AsyncImage(
