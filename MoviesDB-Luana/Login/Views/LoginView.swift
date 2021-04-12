@@ -28,7 +28,6 @@ struct LoginView: View {
                 }
                 .buttonStyle( LoginButtonStyle())
                 .disabled(!viewModel.isValid)
-                .opacity(viewModel.isValid ? 1 : 0.5)
                 .fullScreenCover(isPresented: $viewModel.pushActive, content: {
                     ShowsCollectionView()
                 })
