@@ -126,15 +126,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EB0C54B32626005300272C3D /* Utils */ = {
+		EB0C54B32626005300272C3D /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				EB8E24752613CE31009D9409 /* Info.plist */,
 				EB0C549426208D5200272C3D /* Colors.xcassets */,
 				EB8E24702613CE31009D9409 /* Assets.xcassets */,
 				EB8C0527261CA405006B0B48 /* MovieDBError.swift */,
-				EB8E252D2614FE74009D9409 /* SessionManager */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		EB42848D2626196F00E630C7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
 				EBABB805261D06B6002A4FBD /* ImageLoader+AsyncImage */,
+				EB8E252D2614FE74009D9409 /* SessionManager */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -211,7 +218,8 @@
 				EB8E24CF2614BE74009D9409 /* Base */,
 				EB8E24BA2613EE5B009D9409 /* Login */,
 				EB8E24C82614BE50009D9409 /* Shows */,
-				EB0C54B32626005300272C3D /* Utils */,
+				EB42848D2626196F00E630C7 /* Utils */,
+				EB0C54B32626005300272C3D /* SupportingFiles */,
 				EB8E24722613CE31009D9409 /* Preview Content */,
 			);
 			path = "MoviesDB-Luana";
