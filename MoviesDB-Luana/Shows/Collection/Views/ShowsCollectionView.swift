@@ -44,8 +44,8 @@ struct ShowsCollectionView: View {
                             ShowCell(viewModel: viewModel)
                         }
 
-                        if !viewModel.isLastPage {
-                            EmptyView()
+                        if viewModel.isLastPage == false {
+                            ProgressView()
                                 .onAppear {
                                     viewModel.currentPage += 1
                                     viewModel.fetchShows(for: viewModel.selectedShowType)
