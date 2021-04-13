@@ -32,6 +32,7 @@ struct ShowsCollectionView: View {
                 }
                 .onChange(of: viewModel.selectedShowType, perform: { value in
                     viewModel.shows = []
+                    viewModel.currentPage = 1
                     viewModel.fetchShows(for: value)
                 })
                 .pickerStyle(SegmentedPickerStyle())
