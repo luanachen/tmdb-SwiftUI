@@ -31,8 +31,8 @@ struct ShowsCollectionView: View {
                     }
                 }
                 .onChange(of: viewModel.selectedShowType, perform: { value in
-                    viewModel.fetchShowsForShow(type: value)
-
+                    viewModel.shows = []
+                    viewModel.fetchShows(for: value)
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(EdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24))
@@ -42,6 +42,14 @@ struct ShowsCollectionView: View {
                         ForEach(viewModel.shows, id: \.id) { item in
                             let viewModel = ShowCellViewModel(show: item)
                             ShowCell(viewModel: viewModel)
+                        }
+
+                        if !viewModel.isLastPage {
+                            EmptyView()
+                                .onAppear {
+                                    viewModel.currentPage += 1
+                                    viewModel.fetchShows(for: viewModel.selectedShowType)
+                                }
                         }
                     }
                 }
@@ -61,12 +69,12 @@ struct ShowsCollectionView: View {
             .modifier(NavigationBarModifier(backgroundColor: UIColor(named: "tmdb-grey")))
         }
         .onAppear(perform: {
-            viewModel.fetchShowsForShow(type: .popular)
+            viewModel.fetchShows(for: .popular)
         })
         .alert(isPresented: $viewModel.isShowingAlert) {
             Alert(title: Text("Loading error."),
                   dismissButton: .default(Text("Try again"), action: {
-                    viewModel.fetchShowsForShow(type: .popular)
+                    viewModel.fetchShows(for: .popular)
                   }))
         }
     }

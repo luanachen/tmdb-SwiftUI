@@ -23,6 +23,9 @@ class ShowsCollectionViewModel: ObservableObject {
     @Published var isShowingAlert: Bool = false
     @Published var selectedShowType = ShowTypes.popular
 
+    var currentPage = 1
+    var isLastPage = false
+
     private var cancellableSet = Set<AnyCancellable>()
     private var repository: ShowsRepositoryProtocol
 
@@ -38,16 +41,16 @@ class ShowsCollectionViewModel: ObservableObject {
         self.repository = repository
     }
 
-    func fetchShowsForShow(type: ShowTypes) {
-        switch type {
+    func fetchShows(for ShowType: ShowTypes) {
+        switch ShowType {
         case .popular:
-            fetchShowsForShow(endpoint: .popularTVShows)
+            fetchShowsForShow(endpoint: .popularTVShows(currentPage.description))
         case .onTv:
-            fetchShowsForShow(endpoint: .onTv)
+            fetchShowsForShow(endpoint: .onTv(currentPage.description))
         case .airingToday:
-            fetchShowsForShow(endpoint: .airingToday)
+            fetchShowsForShow(endpoint: .airingToday(currentPage.description))
         case .topRated:
-            fetchShowsForShow(endpoint: .topRated)
+            fetchShowsForShow(endpoint: .topRated(currentPage.description))
         }
     }
 
@@ -63,7 +66,11 @@ class ShowsCollectionViewModel: ObservableObject {
                     self.isShowingAlert.toggle()
                 }
             } receiveValue: { showList in
-                self.shows = showList.results
+                self.shows.append(contentsOf: showList.results)
+
+                if self.currentPage == showList.totalPages {
+                    self.isLastPage = true
+                }
             }
             .store(in: &cancellableSet)
     }
