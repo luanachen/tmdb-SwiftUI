@@ -82,6 +82,7 @@ class LoginViewModel: ObservableObject {
     func login() {
         // Request token
         repository.requestToken()
+            .retry(3)
             .flatMap { [weak self] requestToken -> AnyPublisher<String, Error> in
                 guard let self = self else {
                     return Fail(error: MovieDBError.selfNotFound).eraseToAnyPublisher()
@@ -92,6 +93,7 @@ class LoginViewModel: ObservableObject {
                 // Validate request token with login
                 return self.repository.loginWithUser(login: model)
             }
+            .retry(3)
             .flatMap { [weak self] requestToken -> AnyPublisher<SessionId, Error> in
                 guard let self = self else {
                     return Fail(error: MovieDBError.selfNotFound).eraseToAnyPublisher()
@@ -100,6 +102,8 @@ class LoginViewModel: ObservableObject {
                 // Request Session id with token
                 return self.repository.requestSession(requestToken: requestToken)
             }
+            .retry(3)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] response in
                 switch response {
                 case .finished:

@@ -33,6 +33,7 @@ class ShowDetailViewModel: ObservableObject {
 
     func fetchShowDetail() {
         repository.fetchShowDetail(tvId: show.id.description)
+            .retry(3)
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -65,6 +66,7 @@ class ShowDetailViewModel: ObservableObject {
 
     func fetchCasts() {
         repository.fetchShowCast(tvId: show.id.description)
+            .retry(3)
             .sink { completion in
                 switch completion {
                 case .finished:
