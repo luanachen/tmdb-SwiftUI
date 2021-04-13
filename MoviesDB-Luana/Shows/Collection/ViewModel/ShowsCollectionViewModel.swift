@@ -53,6 +53,7 @@ class ShowsCollectionViewModel: ObservableObject {
 
     private func fetchShowsForShow(endpoint: ShowsEndpoints) {
         repository.fetchShowList(endpoint: endpoint)
+            .retry(3)
             .sink { completion in
                 switch completion {
                 case .finished:
