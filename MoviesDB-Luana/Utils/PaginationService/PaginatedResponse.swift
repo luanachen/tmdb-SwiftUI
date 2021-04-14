@@ -9,10 +9,6 @@ struct PaginatedResponse<T:Decodable>: Decodable {
         return page < totalPages
     }
 
-    var isPaginating: Bool {
-        return page > 1 && page != totalPages
-    }
-
     var hasCompletedPagination: Bool {
         return page == totalPages
     }
