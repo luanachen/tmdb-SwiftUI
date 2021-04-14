@@ -17,7 +17,7 @@ enum ShowTypes: String, CaseIterable {
 
 class ShowsCollectionViewModel: ObservableObject {
 
-    @Published var shows: [Show] = []
+    @Published var cellViewModels: [ShowCellViewModel] = []
     @Published var errorMessage: String?
     @Published var selectedShow: Show?
     @Published var isShowingAlert: Bool = false
@@ -66,7 +66,10 @@ class ShowsCollectionViewModel: ObservableObject {
                     self.isShowingAlert.toggle()
                 }
             } receiveValue: { showList in
-                self.shows.append(contentsOf: showList.results)
+                showList.results.forEach {
+                    let viewModel = ShowCellViewModel(show: $0)
+                    self.cellViewModels.append(viewModel)
+                }
 
                 if self.currentPage == showList.totalPages {
                     self.isLastPage = true

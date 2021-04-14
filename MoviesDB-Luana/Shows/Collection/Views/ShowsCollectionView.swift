@@ -31,7 +31,7 @@ struct ShowsCollectionView: View {
                     }
                 }
                 .onChange(of: viewModel.selectedShowType, perform: { value in
-                    viewModel.shows = []
+                    viewModel.cellViewModels = []
                     viewModel.currentPage = 1
                     viewModel.fetchShows(for: value)
                 })
@@ -40,9 +40,8 @@ struct ShowsCollectionView: View {
 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 8) {
-                        ForEach(viewModel.shows, id: \.id) { item in
-                            let viewModel = ShowCellViewModel(show: item)
-                            ShowCell(viewModel: viewModel)
+                        ForEach(viewModel.cellViewModels, id: \.id) { cellViewModel in
+                            ShowCell(viewModel: cellViewModel)
                         }
 
                         if !viewModel.isLastPage {
