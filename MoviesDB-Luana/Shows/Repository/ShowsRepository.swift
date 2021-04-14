@@ -3,7 +3,7 @@ import Foundation
 import NetworkHelper
 
 protocol ShowsRepositoryProtocol {
-    func fetchShowList(endpoint: ShowsEndpoints) -> AnyPublisher<ShowList, Error>
+    func fetchShowList(endpoint: ShowsEndpoints) -> AnyPublisher<Paginator<Show>, Error>
     func fetchShowDetail(tvId: String) -> AnyPublisher<ShowDetail, Error>
     func fetchShowCast(tvId: String) -> AnyPublisher<Credit, Error>
 }
@@ -11,14 +11,14 @@ protocol ShowsRepositoryProtocol {
 class ShowsRepository: ShowsRepositoryProtocol, APIClient {
     let session: URLSession = URLSession.shared
 
-    func fetchShowList(endpoint: ShowsEndpoints) -> AnyPublisher<ShowList, Error> {
+    func fetchShowList(endpoint: ShowsEndpoints) -> AnyPublisher<Paginator<Show>, Error> {
         let endPoint = endpoint
         var request = endPoint.request
         request.httpMethod = HTTPMethod.get.rawValue
 
        return Future { seal in
         self.fetch(with: request) { json in
-                return json as? ShowList
+                return json as? Paginator<Show>
             } completion: { response in
                 switch response {
                 case .failure(let error):

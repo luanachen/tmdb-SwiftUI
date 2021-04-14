@@ -45,7 +45,7 @@ struct ShowsCollectionView: View {
                             ShowCell(viewModel: viewModel)
                         }
 
-                        if viewModel.isLastPage == false {
+                        if !viewModel.isLastPage {
                             ProgressView()
                                 .onAppear {
                                     viewModel.currentPage += 1
