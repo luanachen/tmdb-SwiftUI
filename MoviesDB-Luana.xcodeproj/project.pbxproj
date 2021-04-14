@@ -147,7 +147,7 @@
 				EBABB805261D06B6002A4FBD /* ImageLoader+AsyncImage */,
 				EB8E252D2614FE74009D9409 /* SessionManager */,
 				EB4284A82627720C00E630C7 /* PaginationService */,
-				EB4284AF262772E500E630C7 /* MoviesDBNetworkWrapper.swift */,
+				EB4284B72627749000E630C7 /* NetworkWrapper */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -159,6 +159,14 @@
 				EB4284A026276EAA00E630C7 /* PaginationService.swift */,
 			);
 			path = PaginationService;
+			sourceTree = "<group>";
+		};
+		EB4284B72627749000E630C7 /* NetworkWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				EB4284AF262772E500E630C7 /* MoviesDBNetworkWrapper.swift */,
+			);
+			path = NetworkWrapper;
 			sourceTree = "<group>";
 		};
 		EB8C053B261CC906006B0B48 /* Repository */ = {
