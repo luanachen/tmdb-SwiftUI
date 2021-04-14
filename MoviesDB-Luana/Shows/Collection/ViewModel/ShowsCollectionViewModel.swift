@@ -16,19 +16,19 @@ enum ShowTypes: String, CaseIterable {
 }
 
 class ShowsCollectionViewModel: ObservableObject {
-
+    
     @Published var cellViewModels: [ShowCellViewModel] = []
     @Published var errorMessage: String?
     @Published var selectedShow: Show?
     @Published var isShowingAlert: Bool = false
     @Published var selectedShowType = ShowTypes.popular
-
+    
     var currentPage = 1
-    var isLastPage = false
-
+    var hasCompletedPagination = false
+    
     private var cancellableSet = Set<AnyCancellable>()
     private var repository: ShowsRepositoryProtocol
-
+    
     var segmentedControlItems: [String] {
         var items = [String]()
         for showType in ShowTypes.allCases {
@@ -36,11 +36,22 @@ class ShowsCollectionViewModel: ObservableObject {
         }
         return items
     }
-
+    
     init(repository: ShowsRepositoryProtocol = ShowsRepository()) {
         self.repository = repository
     }
-
+    
+    func onChangePickerView(value: ShowTypes) {
+        cellViewModels = []
+        currentPage = 1
+        fetchShows(for: value)
+    }
+    
+    func onAppearProgressView() {
+        currentPage += 1
+        fetchShows(for: selectedShowType)
+    }
+    
     func fetchShows(for ShowType: ShowTypes) {
         switch ShowType {
         case .popular:
@@ -53,7 +64,7 @@ class ShowsCollectionViewModel: ObservableObject {
             fetchShowsForShow(endpoint: .topRated(currentPage.description))
         }
     }
-
+    
     private func fetchShowsForShow(endpoint: ShowsEndpoints) {
         repository.fetchShowList(endpoint: endpoint)
             .retry(3)
@@ -65,15 +76,13 @@ class ShowsCollectionViewModel: ObservableObject {
                     print(error)
                     self.isShowingAlert.toggle()
                 }
-            } receiveValue: { showList in
-                showList.results.forEach {
+            } receiveValue: { paginatedResponse in
+                paginatedResponse.results.forEach {
                     let viewModel = ShowCellViewModel(show: $0)
                     self.cellViewModels.append(viewModel)
                 }
-
-                if self.currentPage == showList.totalPages {
-                    self.isLastPage = true
-                }
+                
+                self.hasCompletedPagination = paginatedResponse.hasCompletedPagination
             }
             .store(in: &cancellableSet)
     }

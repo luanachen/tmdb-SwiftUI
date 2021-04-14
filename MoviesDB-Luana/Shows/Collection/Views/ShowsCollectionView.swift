@@ -31,9 +31,7 @@ struct ShowsCollectionView: View {
                     }
                 }
                 .onChange(of: viewModel.selectedShowType, perform: { value in
-                    viewModel.cellViewModels = []
-                    viewModel.currentPage = 1
-                    viewModel.fetchShows(for: value)
+                    viewModel.onChangePickerView(value: value)
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(EdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24))
@@ -44,11 +42,10 @@ struct ShowsCollectionView: View {
                             ShowCell(viewModel: cellViewModel)
                         }
 
-                        if !viewModel.isLastPage {
+                        if !viewModel.hasCompletedPagination {
                             ProgressView()
                                 .onAppear {
-                                    viewModel.currentPage += 1
-                                    viewModel.fetchShows(for: viewModel.selectedShowType)
+                                    viewModel.onAppearProgressView()
                                 }
                         }
                     }
