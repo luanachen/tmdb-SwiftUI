@@ -55,17 +55,17 @@ class ShowsCollectionViewModel: ObservableObject {
     func fetchShows(for ShowType: ShowTypes) {
         switch ShowType {
         case .popular:
-            fetchShowsForShow(endpoint: .popularTVShows(currentPage.description))
+            fetchShow(with: .popularTVShows(currentPage.description))
         case .onTv:
-            fetchShowsForShow(endpoint: .onTv(currentPage.description))
+            fetchShow(with: .onTv(currentPage.description))
         case .airingToday:
-            fetchShowsForShow(endpoint: .airingToday(currentPage.description))
+            fetchShow(with: .airingToday(currentPage.description))
         case .topRated:
-            fetchShowsForShow(endpoint: .topRated(currentPage.description))
+            fetchShow(with: .topRated(currentPage.description))
         }
     }
     
-    private func fetchShowsForShow(endpoint: ShowsEndpoints) {
+    private func fetchShow(with endpoint: ShowsEndpoints) {
         repository.fetchShowList(endpoint: endpoint)
             .retry(3)
             .sink { completion in

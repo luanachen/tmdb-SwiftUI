@@ -1,5 +1,4 @@
 import Foundation
-import NetworkHelper
 
 enum ShowsEndpoints {
     case popularTVShows(String)
@@ -11,7 +10,7 @@ enum ShowsEndpoints {
     case cast(String)
 }
 
-extension ShowsEndpoints: EndpointType {
+extension ShowsEndpoints: MoviesDBEndpointType {
     private var apiKey: String {
         "d26d586dbfdee567a78223358cc2512d"
     }
