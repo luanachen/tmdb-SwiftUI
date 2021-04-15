@@ -1,17 +1,16 @@
 import Foundation
-import NetworkHelper
 
 enum ShowsEndpoints {
-    case popularTVShows
-    case onTv
-    case airingToday
-    case topRated
+    case popularTVShows(String)
+    case onTv(String)
+    case airingToday(String)
+    case topRated(String)
     case image(String)
     case detail(String)
     case cast(String)
 }
 
-extension ShowsEndpoints: EndpointType {
+extension ShowsEndpoints: MoviesDBEndpointType {
     private var apiKey: String {
         "d26d586dbfdee567a78223358cc2512d"
     }
@@ -47,16 +46,19 @@ extension ShowsEndpoints: EndpointType {
     }
 
     var queryItems: [URLQueryItem]? {
+        var queryItems: [URLQueryItem] = []
+        let key = URLQueryItem(name: "api_key", value: apiKey)
+        let language = URLQueryItem(name: "language", value: "en-US")
+        let querys = [key, language]
+        querys.forEach {
+            queryItems.append($0)
+        }
+
         switch self {
-        case .popularTVShows, .onTv, .airingToday, .topRated, .detail, .cast:
-            var queryItems: [URLQueryItem] = []
-            let key = URLQueryItem(name: "api_key", value: apiKey)
-            let language = URLQueryItem(name: "language", value: "en-US")
-            let page = URLQueryItem(name: "page", value: "1")
-            let querys = [key, language, page]
-            querys.forEach {
-                queryItems.append($0)
-            }
+        case .popularTVShows(let pageNumber), .onTv(let pageNumber), .airingToday(let pageNumber),
+             .topRated(let pageNumber), .detail(let pageNumber), .cast(let pageNumber):
+            let page = URLQueryItem(name: "page", value: pageNumber)
+            queryItems.append(page)
             return queryItems
         case .image:
             return nil

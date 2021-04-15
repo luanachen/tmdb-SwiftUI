@@ -16,16 +16,19 @@ enum ShowTypes: String, CaseIterable {
 }
 
 class ShowsCollectionViewModel: ObservableObject {
-
-    @Published var shows: [Show] = []
+    
+    @Published var cellViewModels: [ShowCellViewModel] = []
     @Published var errorMessage: String?
     @Published var selectedShow: Show?
     @Published var isShowingAlert: Bool = false
     @Published var selectedShowType = ShowTypes.popular
-
+    
+    var currentPage = 1
+    var hasCompletedPagination = false
+    
     private var cancellableSet = Set<AnyCancellable>()
-    private var repository: ShowsRepositoryProtocol
-
+    private var service: ShowsServiceType
+    
     var segmentedControlItems: [String] {
         var items = [String]()
         for showType in ShowTypes.allCases {
@@ -33,27 +36,39 @@ class ShowsCollectionViewModel: ObservableObject {
         }
         return items
     }
-
-    init(repository: ShowsRepositoryProtocol = ShowsRepository()) {
-        self.repository = repository
+    
+    init(service: ShowsServiceType = ShowsService()) {
+        self.service = service
     }
-
-    func fetchShowsForShow(type: ShowTypes) {
-        switch type {
+    
+    func onChangePickerView(value: ShowTypes) {
+        cellViewModels = []
+        currentPage = 1
+        fetchShows(for: value)
+    }
+    
+    func onAppearProgressView() {
+        currentPage += 1
+        fetchShows(for: selectedShowType)
+    }
+    
+    func fetchShows(for ShowType: ShowTypes) {
+        switch ShowType {
         case .popular:
-            fetchShowsForShow(endpoint: .popularTVShows)
+            fetchShow(with: .popularTVShows(currentPage.description))
         case .onTv:
-            fetchShowsForShow(endpoint: .onTv)
+            fetchShow(with: .onTv(currentPage.description))
         case .airingToday:
-            fetchShowsForShow(endpoint: .airingToday)
+            fetchShow(with: .airingToday(currentPage.description))
         case .topRated:
-            fetchShowsForShow(endpoint: .topRated)
+            fetchShow(with: .topRated(currentPage.description))
         }
     }
+    
+    private func fetchShow(with endpoint: ShowsEndpoints) {
+        guard !hasCompletedPagination, !service.isPaginating else { return }
 
-    private func fetchShowsForShow(endpoint: ShowsEndpoints) {
-        repository.fetchShowList(endpoint: endpoint)
-            .retry(3)
+        service.fetchShowList(endpoint: endpoint)
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -62,8 +77,13 @@ class ShowsCollectionViewModel: ObservableObject {
                     print(error)
                     self.isShowingAlert.toggle()
                 }
-            } receiveValue: { showList in
-                self.shows = showList.results
+            } receiveValue: { paginatedResponse in
+                paginatedResponse.results?.forEach {
+                    let viewModel = ShowCellViewModel(show: $0)
+                    self.cellViewModels.append(viewModel)
+                }
+                
+                self.hasCompletedPagination = paginatedResponse.hasCompletedPagination
             }
             .store(in: &cancellableSet)
     }

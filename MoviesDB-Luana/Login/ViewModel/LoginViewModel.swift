@@ -21,7 +21,7 @@ class LoginViewModel: ObservableObject {
 
     private var cancellableSet: Set<AnyCancellable> = []
 
-    private var repository: LoginRepositoryProtocol
+    private var service: LoginServiceType
 
     private var validUserNamePublisher: AnyPublisher<String?, Never> {
         $username
@@ -51,8 +51,8 @@ class LoginViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
 
-    init(repository: LoginRepositoryProtocol = LoginRepository()) {
-        self.repository = repository
+    init(service: LoginServiceType = LoginService()) {
+        self.service = service
         setupPublishers()
     }
 
@@ -81,7 +81,7 @@ class LoginViewModel: ObservableObject {
 
     func login() {
         // Request token
-        repository.requestToken()
+        service.requestToken()
             .retry(3)
             .flatMap { [weak self] requestToken -> AnyPublisher<String, Error> in
                 guard let self = self else {
@@ -91,7 +91,7 @@ class LoginViewModel: ObservableObject {
                 let model = LoginModel(username: self.username, password: self.password, requestToken: requestToken.requestToken)
 
                 // Validate request token with login
-                return self.repository.loginWithUser(login: model)
+                return self.service.loginWithUser(login: model)
             }
             .retry(3)
             .flatMap { [weak self] requestToken -> AnyPublisher<SessionId, Error> in
@@ -100,7 +100,7 @@ class LoginViewModel: ObservableObject {
                 }
 
                 // Request Session id with token
-                return self.repository.requestSession(requestToken: requestToken)
+                return self.service.requestSession(requestToken: requestToken)
             }
             .retry(3)
             .receive(on: DispatchQueue.main)
@@ -112,7 +112,7 @@ class LoginViewModel: ObservableObject {
                     self?.showAlert.toggle()
                 }
             } receiveValue: { sessionId in
-                self.repository.saveUserSession(sessionId: sessionId.sessionId)
+                self.service.saveUserSession(sessionId: sessionId.sessionId)
                 self.pushActive.toggle()
             }
             .store(in: &cancellableSet)
