@@ -6,10 +6,10 @@ struct PaginatedResponse<T:Decodable>: Decodable {
     let totalPages: Int
 
     var canPaginate: Bool {
-        return page < totalPages
+        page < totalPages
     }
 
     var hasCompletedPagination: Bool {
-        return page == totalPages
+        page == totalPages
     }
 }
