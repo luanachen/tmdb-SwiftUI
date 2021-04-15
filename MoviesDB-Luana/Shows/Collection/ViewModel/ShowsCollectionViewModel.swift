@@ -66,7 +66,7 @@ class ShowsCollectionViewModel: ObservableObject {
     }
     
     private func fetchShow(with endpoint: ShowsEndpoints) {
-        guard !hasCompletedPagination, !repository.paginationService.isPaginating else { return }
+        guard !hasCompletedPagination, !repository.isPaginating else { return }
 
         repository.fetchShowList(endpoint: endpoint)
             .sink { completion in

@@ -2,19 +2,22 @@ import Combine
 import Foundation
 
 protocol ShowsRepositoryProtocol {
-    var paginationService: PaginationServiceType { get }
+    var isPaginating: Bool { get }
     func fetchShowList(endpoint: ShowsEndpoints) -> AnyPublisher<PaginatedResponse<Show>, Error>
     func fetchShowDetail(tvId: String) -> AnyPublisher<ShowDetail, Error>
     func fetchShowCast(tvId: String) -> AnyPublisher<Credit, Error>
 }
 
 class ShowsRepository: ShowsRepositoryProtocol, MoviesDBNetworkClientType {
+    private let paginationService: PaginationServiceType
+
     let session: URLSession = URLSession.shared
 
-    let paginationService: PaginationServiceType
+    var isPaginating = false
 
     init(paginationService: PaginationServiceType = PaginationService()) {
         self.paginationService = paginationService
+        self.isPaginating = paginationService.isPaginating
     }
 
     func fetchShowList(endpoint: ShowsEndpoints) -> AnyPublisher<PaginatedResponse<Show>, Error> {
