@@ -19,7 +19,7 @@ class ShowCellViewModel: Identifiable, ObservableObject {
     let id: UUID
 
     var url: URL {
-        let endpoint = ShowsEndpoints.image(show.posterPath)
+        let endpoint = ShowsEndpoints.image(show.posterPath ?? "")
         return URL(string: endpoint.request.url?.absoluteString ?? "")!
     }
 

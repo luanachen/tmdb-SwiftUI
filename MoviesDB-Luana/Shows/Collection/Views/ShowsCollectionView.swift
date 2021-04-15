@@ -31,17 +31,22 @@ struct ShowsCollectionView: View {
                     }
                 }
                 .onChange(of: viewModel.selectedShowType, perform: { value in
-                    viewModel.fetchShowsForShow(type: value)
-
+                    viewModel.onChangePickerView(value: value)
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(EdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24))
 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 8) {
-                        ForEach(viewModel.shows, id: \.id) { item in
-                            let viewModel = ShowCellViewModel(show: item)
-                            ShowCell(viewModel: viewModel)
+                        ForEach(viewModel.cellViewModels, id: \.id) { cellViewModel in
+                            ShowCell(viewModel: cellViewModel)
+                        }
+
+                        if !viewModel.hasCompletedPagination {
+                            ProgressView()
+                                .onAppear {
+                                    viewModel.onAppearProgressView()
+                                }
                         }
                     }
                 }
@@ -61,12 +66,12 @@ struct ShowsCollectionView: View {
             .modifier(NavigationBarModifier(backgroundColor: UIColor(named: "tmdb-grey")))
         }
         .onAppear(perform: {
-            viewModel.fetchShowsForShow(type: .popular)
+            viewModel.fetchShows(for: .popular)
         })
         .alert(isPresented: $viewModel.isShowingAlert) {
             Alert(title: Text("Loading error."),
                   dismissButton: .default(Text("Try again"), action: {
-                    viewModel.fetchShowsForShow(type: .popular)
+                    viewModel.fetchShows(for: .popular)
                   }))
         }
     }

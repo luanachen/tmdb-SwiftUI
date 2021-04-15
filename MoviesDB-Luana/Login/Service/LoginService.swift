@@ -1,8 +1,7 @@
 import Combine
 import Foundation
-import NetworkHelper
 
-protocol LoginRepositoryProtocol {
+protocol LoginServiceType {
     func saveUserSession(sessionId: String)
     func getUserSession() -> String?
     func requestToken() -> AnyPublisher<Authentication, Error>
@@ -10,7 +9,7 @@ protocol LoginRepositoryProtocol {
     func requestSession(requestToken: String) -> AnyPublisher<SessionId, Error>
 }
 
-class LoginRepository: APIClient, LoginRepositoryProtocol {
+class LoginService: LoginServiceType, MoviesDBNetworkClientType {
     let session: URLSession = URLSession.shared
 
     let sessionStoreManager: SessionStoreManager
@@ -32,7 +31,7 @@ class LoginRepository: APIClient, LoginRepositoryProtocol {
     func requestToken() -> AnyPublisher<Authentication, Error> {
         let endPoint = LoginEndpoint.requestToken
         var request = endPoint.request
-        request.httpMethod = HTTPMethod.get.rawValue
+        request.httpMethod = HTTPMethodType.get.rawValue
 
         return Future { seal in
             self.fetch(with: request) { json in

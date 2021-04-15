@@ -1,5 +1,4 @@
 import Foundation
-import NetworkHelper
 
 enum LoginEndpoint {
     case requestToken
@@ -7,7 +6,7 @@ enum LoginEndpoint {
     case requestSession
 }
 
-extension LoginEndpoint: EndpointType {
+extension LoginEndpoint: MoviesDBEndpointType {
     private var apiKey: String {
         "d26d586dbfdee567a78223358cc2512d"
     }

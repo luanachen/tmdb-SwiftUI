@@ -7,5 +7,5 @@ struct Show: Decodable, Identifiable {
     let voteAverage: Double
     let overview: String
     let firstAirDate: String
-    let posterPath: String
+    let posterPath: String?
 }
