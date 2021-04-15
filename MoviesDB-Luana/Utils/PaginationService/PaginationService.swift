@@ -15,14 +15,13 @@ protocol PaginationServiceType {
 
 class PaginationService: PaginationServiceType, MoviesDBNetworkClientType {
     var session: URLSession = URLSession.shared
-
     var isPaginating = false
 
     func performPagination<T: Decodable>(request: URLRequest, decodingType: T.Type) -> AnyPublisher<PaginatedResponse<T>, Error> {
         return Future { seal in
             self.isPaginating = true
             self.fetch(with: request) { json in
-                return json as? PaginatedResponse<T>
+                json as? PaginatedResponse<T>
             } completion: { response in
                 switch response {
                 case .failure(let error):

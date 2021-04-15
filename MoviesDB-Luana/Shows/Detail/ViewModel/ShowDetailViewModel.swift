@@ -19,20 +19,20 @@ class ShowDetailViewModel: ObservableObject {
     @Published var isMarkedAsFavorite: Bool = false
 
     private var cancellableSet = Set<AnyCancellable>()
-    private var repository: ShowsRepositoryProtocol
+    private var service: ShowsServiceType
 
     var posterUrl: URL {
         let endpoint = ShowsEndpoints.image(show.posterPath ?? "")
         return URL(string: endpoint.request.url?.absoluteString ?? "")!
     }
 
-    init(show: Show, repository: ShowsRepositoryProtocol = ShowsRepository()) {
+    init(show: Show, service: ShowsServiceType = ShowsService()) {
         self.show = show
-        self.repository = repository
+        self.service = service
     }
 
     func fetchShowDetail() {
-        repository.fetchShowDetail(tvId: show.id.description)
+        service.fetchShowDetail(tvId: show.id.description)
             .retry(3)
             .sink { completion in
                 switch completion {
@@ -65,7 +65,7 @@ class ShowDetailViewModel: ObservableObject {
     }
 
     func fetchCasts() {
-        repository.fetchShowCast(tvId: show.id.description)
+        service.fetchShowCast(tvId: show.id.description)
             .retry(3)
             .sink { completion in
                 switch completion {

@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-protocol LoginRepositoryProtocol {
+protocol LoginServiceType {
     func saveUserSession(sessionId: String)
     func getUserSession() -> String?
     func requestToken() -> AnyPublisher<Authentication, Error>
@@ -9,7 +9,7 @@ protocol LoginRepositoryProtocol {
     func requestSession(requestToken: String) -> AnyPublisher<SessionId, Error>
 }
 
-class LoginRepository: LoginRepositoryProtocol, MoviesDBNetworkClientType {
+class LoginService: LoginServiceType, MoviesDBNetworkClientType {
     let session: URLSession = URLSession.shared
 
     let sessionStoreManager: SessionStoreManager

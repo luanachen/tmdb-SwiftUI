@@ -27,7 +27,7 @@ class ShowsCollectionViewModel: ObservableObject {
     var hasCompletedPagination = false
     
     private var cancellableSet = Set<AnyCancellable>()
-    private var repository: ShowsRepositoryProtocol
+    private var service: ShowsServiceType
     
     var segmentedControlItems: [String] {
         var items = [String]()
@@ -37,8 +37,8 @@ class ShowsCollectionViewModel: ObservableObject {
         return items
     }
     
-    init(repository: ShowsRepositoryProtocol = ShowsRepository()) {
-        self.repository = repository
+    init(service: ShowsServiceType = ShowsService()) {
+        self.service = service
     }
     
     func onChangePickerView(value: ShowTypes) {
@@ -66,9 +66,9 @@ class ShowsCollectionViewModel: ObservableObject {
     }
     
     private func fetchShow(with endpoint: ShowsEndpoints) {
-        guard !hasCompletedPagination, !repository.isPaginating else { return }
+        guard !hasCompletedPagination, !service.isPaginating else { return }
 
-        repository.fetchShowList(endpoint: endpoint)
+        service.fetchShowList(endpoint: endpoint)
             .sink { completion in
                 switch completion {
                 case .finished:
