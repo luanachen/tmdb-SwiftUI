@@ -10,7 +10,7 @@ import Foundation
 
 protocol PaginationServiceType {
     var isPaginating: Bool { get }
-    func performPagination<T: Decodable>(endPoint: MoviesDBEndpointType, decodingType: T.Type) -> AnyPublisher<PaginatedResponse<T>, Error>
+    func performPagination<T: Decodable>(request: URLRequest, decodingType: T.Type) -> AnyPublisher<PaginatedResponse<T>, Error>
 }
 
 class PaginationService: PaginationServiceType, MoviesDBNetworkClientType {
@@ -18,11 +18,7 @@ class PaginationService: PaginationServiceType, MoviesDBNetworkClientType {
 
     var isPaginating = false
 
-    func performPagination<T: Decodable>(endPoint: MoviesDBEndpointType, decodingType: T.Type) -> AnyPublisher<PaginatedResponse<T>, Error> {
-        let endPoint = endPoint
-        var request = endPoint.request
-        request.httpMethod = HTTPMethodType.get.rawValue
-
+    func performPagination<T: Decodable>(request: URLRequest, decodingType: T.Type) -> AnyPublisher<PaginatedResponse<T>, Error> {
         return Future { seal in
             self.isPaginating = true
             self.fetch(with: request) { json in

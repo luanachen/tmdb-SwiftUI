@@ -22,7 +22,7 @@ class ShowsRepository: ShowsRepositoryProtocol, MoviesDBNetworkClientType {
         var request = endPoint.request
         request.httpMethod = HTTPMethodType.get.rawValue
 
-        return paginationService.performPagination(endPoint: endpoint, decodingType: Show.self)
+        return paginationService.performPagination(request: request, decodingType: Show.self)
     }
 
     func fetchShowDetail(tvId: String) -> AnyPublisher<ShowDetail, Error> {
