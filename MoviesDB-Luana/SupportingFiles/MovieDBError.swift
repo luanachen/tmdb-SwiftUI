@@ -9,4 +9,5 @@ import Foundation
 
 enum MovieDBError: Error {
     case selfNotFound
+    case somethingWentWrong
 }

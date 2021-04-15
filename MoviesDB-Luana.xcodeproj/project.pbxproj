@@ -12,6 +12,7 @@
 		EB1C33EF261B778A00F3C5E1 /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */; };
 		EB1C33F0261B778A00F3C5E1 /* LoginTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */; };
 		EB1C33F1261B778A00F3C5E1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EE261B778A00F3C5E1 /* LoginView.swift */; };
+		EB3A43202628CCFD008CD32B /* XCTest+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A431F2628CCFD008CD32B /* XCTest+extensions.swift */; };
 		EB4284A126276EAA00E630C7 /* PaginationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4284A026276EAA00E630C7 /* PaginationService.swift */; };
 		EB4284B0262772E500E630C7 /* MoviesDBNetworkWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4284AF262772E500E630C7 /* MoviesDBNetworkWrapper.swift */; };
 		EB8C0528261CA405006B0B48 /* MovieDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8C0527261CA405006B0B48 /* MovieDBError.swift */; };
@@ -23,7 +24,6 @@
 		EB8E246D2613CE2E009D9409 /* MoviesDB_LuanaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E246C2613CE2E009D9409 /* MoviesDB_LuanaApp.swift */; };
 		EB8E24712613CE31009D9409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8E24702613CE31009D9409 /* Assets.xcassets */; };
 		EB8E24742613CE31009D9409 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8E24732613CE31009D9409 /* Preview Assets.xcassets */; };
-		EB8E247F2613CE31009D9409 /* MoviesDB_LuanaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E247E2613CE31009D9409 /* MoviesDB_LuanaTests.swift */; };
 		EB8E248A2613CE31009D9409 /* MoviesDB_LuanaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24892613CE31009D9409 /* MoviesDB_LuanaUITests.swift */; };
 		EB8E24C12613EFBF009D9409 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24C02613EFBF009D9409 /* LoginViewModel.swift */; };
 		EB8E24D12614BEB8009D9409 /* ShowsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8E24D02614BEB8009D9409 /* ShowsCollectionView.swift */; };
@@ -42,6 +42,8 @@
 		EBABB7FE261D0503002A4FBD /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBABB7FD261D0503002A4FBD /* EnvironmentValues+ImageCache.swift */; };
 		EBABB80A261DFA4C002A4FBD /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBABB809261DFA4C002A4FBD /* ShowDetailViewModel.swift */; };
 		EBABB813261E1F8D002A4FBD /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBABB812261E1F8D002A4FBD /* DetailContentView.swift */; };
+		EBBC1A792628B5B5009193C9 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC1A782628B5B5009193C9 /* LoginViewModelTests.swift */; };
+		EBBC1A842628BBDB009193C9 /* LoginServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC1A832628BBDB009193C9 /* LoginServiceMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,7 @@
 		EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextFieldModifier.swift; sourceTree = "<group>"; };
 		EB1C33EE261B778A00F3C5E1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EB3A431F2628CCFD008CD32B /* XCTest+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+extensions.swift"; sourceTree = "<group>"; };
 		EB4284A026276EAA00E630C7 /* PaginationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationService.swift; sourceTree = "<group>"; };
 		EB4284AF262772E500E630C7 /* MoviesDBNetworkWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDBNetworkWrapper.swift; sourceTree = "<group>"; };
 		EB8C0527261CA405006B0B48 /* MovieDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBError.swift; sourceTree = "<group>"; };
@@ -81,7 +84,6 @@
 		EB8E24732613CE31009D9409 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB8E24752613CE31009D9409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB8E247A2613CE31009D9409 /* MoviesDB-LuanaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MoviesDB-LuanaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB8E247E2613CE31009D9409 /* MoviesDB_LuanaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDB_LuanaTests.swift; sourceTree = "<group>"; };
 		EB8E24802613CE31009D9409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB8E24852613CE31009D9409 /* MoviesDB-LuanaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MoviesDB-LuanaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB8E24892613CE31009D9409 /* MoviesDB_LuanaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDB_LuanaUITests.swift; sourceTree = "<group>"; };
@@ -102,6 +104,8 @@
 		EBABB7FD261D0503002A4FBD /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
 		EBABB809261DFA4C002A4FBD /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
 		EBABB812261E1F8D002A4FBD /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
+		EBBC1A782628B5B5009193C9 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		EBBC1A832628BBDB009193C9 /* LoginServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,38 @@
 				EB8C0527261CA405006B0B48 /* MovieDBError.swift */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		EB3A43242628D09E008CD32B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				EBBC1A832628BBDB009193C9 /* LoginServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		EB3A432B2628D0A3008CD32B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EB3A431F2628CCFD008CD32B /* XCTest+extensions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		EB3A43322628D0A9008CD32B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EB3A43392628D0BD008CD32B /* ViewModel */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		EB3A43392628D0BD008CD32B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EBBC1A782628B5B5009193C9 /* LoginViewModelTests.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		EB42848D2626196F00E630C7 /* Utils */ = {
@@ -259,7 +295,9 @@
 		EB8E247D2613CE31009D9409 /* MoviesDB-LuanaTests */ = {
 			isa = PBXGroup;
 			children = (
-				EB8E247E2613CE31009D9409 /* MoviesDB_LuanaTests.swift */,
+				EB3A43322628D0A9008CD32B /* Login */,
+				EB3A43242628D09E008CD32B /* Mocks */,
+				EB3A432B2628D0A3008CD32B /* Helper */,
 				EB8E24802613CE31009D9409 /* Info.plist */,
 			);
 			path = "MoviesDB-LuanaTests";
@@ -564,7 +602,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB8E247F2613CE31009D9409 /* MoviesDB_LuanaTests.swift in Sources */,
+				EBBC1A792628B5B5009193C9 /* LoginViewModelTests.swift in Sources */,
+				EBBC1A842628BBDB009193C9 /* LoginServiceMock.swift in Sources */,
+				EB3A43202628CCFD008CD32B /* XCTest+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

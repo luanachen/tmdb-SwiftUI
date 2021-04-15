@@ -25,7 +25,6 @@ class LoginViewModel: ObservableObject {
 
     private var validUserNamePublisher: AnyPublisher<String?, Never> {
         $username
-            .debounce(for: 0.5, scheduler: RunLoop.main)
             .removeDuplicates()
             .map { username in
                 if username.isEmpty {
@@ -39,7 +38,6 @@ class LoginViewModel: ObservableObject {
 
     private var validPasswordPublisher: AnyPublisher<String?, Never> {
         $password
-            .debounce(for: 0.5, scheduler: RunLoop.main)
             .removeDuplicates()
             .map { password in
                 if password.isEmpty {

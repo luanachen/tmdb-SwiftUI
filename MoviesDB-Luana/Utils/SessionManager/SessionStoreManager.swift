@@ -8,7 +8,12 @@
 import Foundation
 import Security
 
-class SessionStoreManager {
+protocol SessionStoreManagerType {
+    func save(key: String, data: Data) -> OSStatus
+    func load(key: String) -> Data?
+}
+
+class SessionStoreManager: SessionStoreManagerType {
 
     func save(key: String, data: Data) -> OSStatus {
         let query = [

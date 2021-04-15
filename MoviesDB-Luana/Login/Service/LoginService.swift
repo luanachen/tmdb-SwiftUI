@@ -12,9 +12,9 @@ protocol LoginServiceType {
 class LoginService: LoginServiceType, MoviesDBNetworkClientType {
     let session: URLSession = URLSession.shared
 
-    let sessionStoreManager: SessionStoreManager
+    let sessionStoreManager: SessionStoreManagerType
 
-    init(sessionStoreManager: SessionStoreManager = SessionStoreManager()) {
+    init(sessionStoreManager: SessionStoreManagerType = SessionStoreManager()) {
         self.sessionStoreManager = sessionStoreManager
     }
 
