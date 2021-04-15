@@ -66,7 +66,7 @@ class ShowsCollectionViewModel: ObservableObject {
     }
     
     private func fetchShow(with endpoint: ShowsEndpoints) {
-        guard !hasCompletedPagination else { return }
+        guard !hasCompletedPagination, !repository.paginationService.isPaginating else { return }
 
         repository.fetchShowList(endpoint: endpoint)
             .sink { completion in
@@ -78,7 +78,7 @@ class ShowsCollectionViewModel: ObservableObject {
                     self.isShowingAlert.toggle()
                 }
             } receiveValue: { paginatedResponse in
-                paginatedResponse.results.forEach {
+                paginatedResponse.results?.forEach {
                     let viewModel = ShowCellViewModel(show: $0)
                     self.cellViewModels.append(viewModel)
                 }

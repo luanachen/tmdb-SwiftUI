@@ -9,6 +9,7 @@ import Combine
 import Foundation
 
 protocol PaginationServiceType {
+    var isPaginating: Bool { get }
     func performPagination<T: Decodable>(endPoint: MoviesDBEndpointType, decodingType: T.Type) -> AnyPublisher<PaginatedResponse<T>, Error>
 }
 
@@ -23,8 +24,7 @@ class PaginationService: PaginationServiceType, MoviesDBNetworkClientType {
         request.httpMethod = HTTPMethodType.get.rawValue
 
         return Future { seal in
-            guard !self.isPaginating else { return }
-            
+            self.isPaginating = true
             self.fetch(with: request) { json in
                 return json as? PaginatedResponse<T>
             } completion: { response in
@@ -33,12 +33,11 @@ class PaginationService: PaginationServiceType, MoviesDBNetworkClientType {
                     seal(.failure(error))
                 case .success(let response):
                     seal(.success(response))
-                    self.isPaginating = false
                 }
             }
         }
         .handleEvents(receiveOutput: { _ in
-            self.isPaginating = true
+            self.isPaginating = false
         })
         .eraseToAnyPublisher()
     }

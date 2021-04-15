@@ -2,6 +2,7 @@ import Combine
 import Foundation
 
 protocol ShowsRepositoryProtocol {
+    var paginationService: PaginationServiceType { get }
     func fetchShowList(endpoint: ShowsEndpoints) -> AnyPublisher<PaginatedResponse<Show>, Error>
     func fetchShowDetail(tvId: String) -> AnyPublisher<ShowDetail, Error>
     func fetchShowCast(tvId: String) -> AnyPublisher<Credit, Error>

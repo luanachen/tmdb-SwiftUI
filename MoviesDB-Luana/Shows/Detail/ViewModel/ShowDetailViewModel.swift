@@ -22,7 +22,7 @@ class ShowDetailViewModel: ObservableObject {
     private var repository: ShowsRepositoryProtocol
 
     var posterUrl: URL {
-        let endpoint = ShowsEndpoints.image(show.posterPath)
+        let endpoint = ShowsEndpoints.image(show.posterPath ?? "")
         return URL(string: endpoint.request.url?.absoluteString ?? "")!
     }
 
