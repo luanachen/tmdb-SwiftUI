@@ -22,6 +22,7 @@ class ShowsCollectionViewModelTests: XCTestCase {
 
     override func tearDown() {
         sut = nil
+        serviceMock = nil
         super.tearDown()
     }
 
