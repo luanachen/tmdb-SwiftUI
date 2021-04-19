@@ -25,14 +25,18 @@ class ShowsCollectionViewModelTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_onChangePickerView_haveCurrentPageReseted() {
+    func test_segmentedControlItems_returnsCorrectNumberOfItems() {
+        XCTAssertEqual(sut.segmentedControlItems.count, 4)
+    }
+
+    func test_onChangePickerView_resetsCurrentPage() {
         sut.onAppearProgressView()
         sut.onChangePickerView(value: .airingToday)
 
         XCTAssertEqual(sut.currentPage, 1)
     }
 
-    func test_onAppearProgressView_haveIncreasedCurrentPage() {
+    func test_onAppearProgressView_increasesCurrentPage() {
         sut.onAppearProgressView()
 
         XCTAssertEqual(sut.currentPage, 2)
