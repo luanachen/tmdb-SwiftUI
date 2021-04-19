@@ -64,7 +64,7 @@ class ShowDetailViewModel: ObservableObject {
             .store(in: &cancellableSet)
     }
 
-    func fetchCasts() {
+    private func fetchCasts() {
         service.fetchShowCast(tvId: show.id.description)
             .retry(3)
             .sink { completion in
