@@ -9,6 +9,9 @@ import Combine
 @testable import MoviesDB_Luana
 
 class LoginServiceMock: LoginServiceType {
+    let requestTokenResponse = ResponseLoader.getResponseFrom(resource: "requestToken", decodable: Authentication.self)
+    let sessionResponse = ResponseLoader.getResponseFrom(resource: "createSession", decodable: SessionId.self)
+
     var isRequestSuccess = true
     var didCallSaveUserSession = false
     var sessionId = ""
@@ -24,9 +27,7 @@ class LoginServiceMock: LoginServiceType {
     func requestToken() -> AnyPublisher<Authentication, Error> {
         return Future { seal in
             if self.isRequestSuccess {
-                seal(.success(Authentication(success: true,
-                                             expiresAt: "01/01",
-                                             requestToken: "123")))
+                seal(.success(self.requestTokenResponse))
             } else {
                 seal(.failure(MovieDBError.somethingWentWrong))
             }
@@ -48,7 +49,7 @@ class LoginServiceMock: LoginServiceType {
     func requestSession(requestToken: String) -> AnyPublisher<SessionId, Error> {
         return Future { seal in
             if self.isRequestSuccess {
-                seal(.success(SessionId(success: true, sessionId: "123")))
+                seal(.success(self.sessionResponse))
             } else {
                 seal(.failure(MovieDBError.somethingWentWrong))
             }
