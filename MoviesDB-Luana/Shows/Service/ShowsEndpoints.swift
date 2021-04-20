@@ -49,16 +49,18 @@ extension ShowsEndpoints: MoviesDBEndpointType {
         var queryItems: [URLQueryItem] = []
         let key = URLQueryItem(name: "api_key", value: apiKey)
         let language = URLQueryItem(name: "language", value: "en-US")
-        let querys = [key, language]
-        querys.forEach {
+        let queries = [key, language]
+        queries.forEach {
             queryItems.append($0)
         }
 
         switch self {
         case .popularTVShows(let pageNumber), .onTv(let pageNumber), .airingToday(let pageNumber),
-             .topRated(let pageNumber), .detail(let pageNumber), .cast(let pageNumber):
+             .topRated(let pageNumber):
             let page = URLQueryItem(name: "page", value: pageNumber)
             queryItems.append(page)
+            return queryItems
+        case .detail, .cast:
             return queryItems
         case .image:
             return nil

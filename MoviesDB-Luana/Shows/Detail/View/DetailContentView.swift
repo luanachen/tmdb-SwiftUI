@@ -61,15 +61,16 @@ struct DetailContentView: View {
                         AsyncImage(
                             url: url,
                             placeholder: {
-                                Text("Loading ...")
-                                    .fixedSize()
+                                Image("placeholder")
+                                    .resizable()
+                                    .background(Color.yellow)
                             },
                             image: { Image(uiImage: $0).resizable() }
                         )
                         .aspectRatio(0.7, contentMode: .fit)
                     }
 
-                    Spacer()
+//                    Spacer()
 
                     VStack(alignment: .leading, spacing: 8) {
                         Text(viewModel.lastSeason ?? "")
@@ -118,8 +119,9 @@ struct DetailContentView: View {
                                     AsyncImage(
                                         url: imageUrl,
                                         placeholder: {
-                                            Text("Loading ...")
-                                                .fixedSize()
+                                            Image("placeholder")
+                                                .resizable()
+                                                .background(Color.yellow)
                                         },
                                         image: {
                                             Image(uiImage: $0)
@@ -162,7 +164,16 @@ struct DetailContentView_Previews: PreviewProvider {
                         overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
                         firstAirDate: "Aug 10, 2018", posterPath: "moviedb")
         let viewModel = ShowDetailViewModel(show: show)
-        DetailContentView(viewModel: viewModel)
-            .previewLayout(.fixed(width: 325, height: 733))
+        viewModel.casts = [CastModel(name: "Homer", profilePath: ""),
+                           CastModel(name: "Margie", profilePath: ""),
+                           CastModel(name: "Lisa", profilePath: "")]
+        viewModel.creatorsName = "Created by Steven Spilberg"
+        viewModel.lastSeasonPosterURL = URL(string: "www")
+        viewModel.lastSeason = "Season 5"
+        viewModel.lastSeasonDate = "01/01/2021"
+        viewModel.isMarkedAsFavorite = true
+        let view = DetailContentView(viewModel: viewModel)
+        return view
+            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
     }
 }
