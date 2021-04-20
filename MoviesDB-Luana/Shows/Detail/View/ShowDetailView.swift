@@ -18,8 +18,9 @@ struct ShowDetailView: View {
                         AsyncImage(
                             url: viewModel.posterUrl,
                             placeholder: {
-                                Text("Loading ...")
-                                    .fixedSize()
+                                Image("placeholder")
+                                    .resizable()
+                                    .background(Color.yellow)
                             },
                             image: { Image(uiImage: $0).resizable() }
                         )
@@ -61,16 +62,5 @@ struct ShowDetailView_Previews: PreviewProvider {
         let viewModel = ShowDetailViewModel(show: show)
         ShowDetailView(viewModel: viewModel)
             .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
-
-
-        let _show = Show(name: "Movie name",
-                         popularity: 7.5,
-                         id: 1,
-                         voteAverage: 8.9,
-                         overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
-                         firstAirDate: "Aug 10, 2018", posterPath: "moviedb")
-        let _viewModel = ShowDetailViewModel(show: _show)
-        ShowDetailView(viewModel: _viewModel)
-            .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro Max"))
     }
 }
