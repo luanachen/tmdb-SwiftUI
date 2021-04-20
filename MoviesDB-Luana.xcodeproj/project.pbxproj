@@ -28,6 +28,8 @@
 		EB3A4396262DDCA5008CD32B /* showCredits.json in Resources */ = {isa = PBXBuildFile; fileRef = EB3A4386262DDC6E008CD32B /* showCredits.json */; };
 		EB3A439B262DEF09008CD32B /* ShowCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A439A262DEF09008CD32B /* ShowCellViewModelTests.swift */; };
 		EB3A43A3262DF271008CD32B /* ShowDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A43A2262DF271008CD32B /* ShowDetailViewModelTests.swift */; };
+		EB3A43B4262E08BD008CD32B /* LoginServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A43B3262E08BD008CD32B /* LoginServiceTests.swift */; };
+		EB3A43BC262E0939008CD32B /* SessionStoreManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A43BB262E0939008CD32B /* SessionStoreManagerMock.swift */; };
 		EB4284A126276EAA00E630C7 /* PaginationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4284A026276EAA00E630C7 /* PaginationService.swift */; };
 		EB4284B0262772E500E630C7 /* MoviesDBNetworkWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4284AF262772E500E630C7 /* MoviesDBNetworkWrapper.swift */; };
 		EB8C0528261CA405006B0B48 /* MovieDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8C0527261CA405006B0B48 /* MovieDBError.swift */; };
@@ -95,6 +97,8 @@
 		EB3A4386262DDC6E008CD32B /* showCredits.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = showCredits.json; sourceTree = "<group>"; };
 		EB3A439A262DEF09008CD32B /* ShowCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCellViewModelTests.swift; sourceTree = "<group>"; };
 		EB3A43A2262DF271008CD32B /* ShowDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModelTests.swift; sourceTree = "<group>"; };
+		EB3A43B3262E08BD008CD32B /* LoginServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceTests.swift; sourceTree = "<group>"; };
+		EB3A43BB262E0939008CD32B /* SessionStoreManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStoreManagerMock.swift; sourceTree = "<group>"; };
 		EB4284A026276EAA00E630C7 /* PaginationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationService.swift; sourceTree = "<group>"; };
 		EB4284AF262772E500E630C7 /* MoviesDBNetworkWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDBNetworkWrapper.swift; sourceTree = "<group>"; };
 		EB8C0527261CA405006B0B48 /* MovieDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBError.swift; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				EBBC1A832628BBDB009193C9 /* LoginServiceMock.swift */,
+				EB3A43BB262E0939008CD32B /* SessionStoreManagerMock.swift */,
 				EB3A4353262A073C008CD32B /* ShowsServiceMock.swift */,
 			);
 			path = Mocks;
@@ -191,6 +196,7 @@
 		EB3A43322628D0A9008CD32B /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				EB3A43B2262E08B2008CD32B /* Service */,
 				EB3A43392628D0BD008CD32B /* ViewModel */,
 			);
 			path = Login;
@@ -256,6 +262,14 @@
 				EB3A43A2262DF271008CD32B /* ShowDetailViewModelTests.swift */,
 			);
 			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		EB3A43B2262E08B2008CD32B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EB3A43B3262E08BD008CD32B /* LoginServiceTests.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		EB42848D2626196F00E630C7 /* Utils */ = {
@@ -695,9 +709,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB3A43BC262E0939008CD32B /* SessionStoreManagerMock.swift in Sources */,
 				EB3A439B262DEF09008CD32B /* ShowCellViewModelTests.swift in Sources */,
 				EBBC1A792628B5B5009193C9 /* LoginViewModelTests.swift in Sources */,
 				EB3A434C2629F1BB008CD32B /* ShowsCollectionViewModelTests.swift in Sources */,
+				EB3A43B4262E08BD008CD32B /* LoginServiceTests.swift in Sources */,
 				EBBC1A842628BBDB009193C9 /* LoginServiceMock.swift in Sources */,
 				EB3A43A3262DF271008CD32B /* ShowDetailViewModelTests.swift in Sources */,
 				EB3A4354262A073C008CD32B /* ShowsServiceMock.swift in Sources */,
