@@ -16,7 +16,8 @@ struct ShowsCollectionView: View {
         GridItem(.flexible())
     ]
 
-    init() {
+    init(viewModel: ShowsCollectionViewModel = ShowsCollectionViewModel()) {
+        _viewModel = StateObject(wrappedValue: viewModel)
         setupSegmentedControl()
         UINavigationBar.appearance().tintColor = .white
     }
@@ -86,8 +87,21 @@ struct ShowsCollectionView: View {
 
 struct ShowsCollectionView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            ShowsCollectionView()
+        let viewModel = ShowsCollectionViewModel(service: nil)
+
+        for _ in 0...6 {
+            let show = Show(name: "Movie name",
+                            popularity: 7.5,
+                            id: 1,
+                            voteAverage: 8.9,
+                            overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
+                            firstAirDate: "Aug 10, 2018", posterPath: "moviedb")
+            let cellViewModel = ShowCellViewModel(show: show)
+            viewModel.cellViewModels.append(cellViewModel)
         }
+
+        let view = ShowsCollectionView(viewModel: viewModel)
+
+        return view
     }
 }

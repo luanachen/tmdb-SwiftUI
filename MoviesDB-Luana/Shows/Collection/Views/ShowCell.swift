@@ -19,7 +19,9 @@ struct ShowCell: View {
                 AsyncImage(
                     url: viewModel.url,
                     placeholder: {
-                        Image("placeholder").resizable()
+                        Image("placeholder")
+                            .resizable()
+                            .background(Color.gray)
                     },
                     image: { Image(uiImage: $0).resizable() }
                 )

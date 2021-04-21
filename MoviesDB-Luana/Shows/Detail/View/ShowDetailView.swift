@@ -19,7 +19,7 @@ struct ShowDetailView: View {
                         placeholder: {
                             Image("placeholder")
                                 .resizable()
-                                .background(Color.yellow)
+                                .background(Color.gray)
                         },
                         image: { Image(uiImage: $0).resizable() }
                     )

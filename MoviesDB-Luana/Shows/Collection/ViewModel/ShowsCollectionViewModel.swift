@@ -27,7 +27,7 @@ class ShowsCollectionViewModel: ObservableObject {
     var hasCompletedPagination = false
     
     private var cancellableSet = Set<AnyCancellable>()
-    private var service: ShowsServiceType
+    private var service: ShowsServiceType?
     
     var segmentedControlItems: [String] {
         var items = [String]()
@@ -37,7 +37,7 @@ class ShowsCollectionViewModel: ObservableObject {
         return items
     }
     
-    init(service: ShowsServiceType = ShowsService()) {
+    init(service: ShowsServiceType? = ShowsService()) {
         self.service = service
     }
     
@@ -66,9 +66,9 @@ class ShowsCollectionViewModel: ObservableObject {
     }
     
     private func fetchShow(with endpoint: ShowsEndpoints) {
-        guard !hasCompletedPagination, !service.isPaginating else { return }
+        guard !hasCompletedPagination, !(service?.isPaginating ?? true) else { return }
 
-        service.fetchShowList(endpoint: endpoint)
+        service?.fetchShowList(endpoint: endpoint)
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -82,7 +82,7 @@ class ShowsCollectionViewModel: ObservableObject {
                     let viewModel = ShowCellViewModel(show: $0)
                     self.cellViewModels.append(viewModel)
                 }
-                
+
                 self.hasCompletedPagination = paginatedResponse.hasCompletedPagination
             }
             .store(in: &cancellableSet)
