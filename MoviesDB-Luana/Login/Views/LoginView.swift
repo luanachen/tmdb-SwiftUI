@@ -5,6 +5,7 @@
 //  Created by Luana Chen Chih Jun on 30/03/21.
 //
 
+import Commons
 import Combine
 import SwiftUI
 
@@ -13,7 +14,7 @@ struct LoginView: View {
 
     var body: some View {
         ZStack {
-            Color("tmdb-backgroundColor").edgesIgnoringSafeArea(.all)
+            Color(UIColor.tmdb_backgroundColor).edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
                 Image("moviedb")
                     .resizable()

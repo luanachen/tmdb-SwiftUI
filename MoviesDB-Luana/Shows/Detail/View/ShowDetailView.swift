@@ -5,6 +5,7 @@
 //  Created by Luana Chen Chih Jun on 03/04/21.
 //
 
+import Commons
 import SwiftUI
 
 struct ShowDetailView: View {
@@ -36,14 +37,14 @@ struct ShowDetailView: View {
                         .font(.system(size: 18, weight: .semibold))
                         .frame(width: 40, height: 40)
                         .foregroundColor(Color.white)
-                        .background(Color("tmdb-green"))
+                        .background(Color(UIColor.tmdb_green))
                         .clipShape(Circle())
                         .offset(x: -48, y: -20)
                 }
                 .offset(y: -50)
             }
         }
-        .background(Color("tmdb-backgroundColor"))
+        .background(Color(UIColor.tmdb_backgroundColor))
         .edgesIgnoringSafeArea(.all)
         .navigationBarTitle(Text(""), displayMode: .large)
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MovieDBError: Error {
+public enum MovieDBError: Error {
     case selfNotFound
     case somethingWentWrong
 }

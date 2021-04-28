@@ -8,14 +8,16 @@
 import Foundation
 import Security
 
-protocol SessionStoreManagerType {
+public protocol SessionStoreManagerType {
     func save(key: String, data: Data) -> OSStatus
     func load(key: String) -> Data?
 }
 
-class SessionStoreManager: SessionStoreManagerType {
+public class SessionStoreManager: SessionStoreManagerType {
+    
+    public init() {}
 
-    func save(key: String, data: Data) -> OSStatus {
+    public func save(key: String, data: Data) -> OSStatus {
         let query = [
             kSecClass as String       : kSecClassGenericPassword as String,
             kSecAttrAccount as String : key,
@@ -26,7 +28,7 @@ class SessionStoreManager: SessionStoreManagerType {
         return SecItemAdd(query as CFDictionary, nil)
     }
 
-    func load(key: String) -> Data? {
+    public func load(key: String) -> Data? {
         let query = [
             kSecClass as String       : kSecClassGenericPassword,
             kSecAttrAccount as String : key,
@@ -41,7 +43,7 @@ class SessionStoreManager: SessionStoreManagerType {
     }
 }
 
-extension Data {
+public extension Data {
 
     init<T>(from value: T) {
         var value = value

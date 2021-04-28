@@ -25,7 +25,7 @@ struct LoginButtonStyle: ButtonStyle {
                 .font(.system(size: 14, weight: .bold))
                 .foregroundColor(.white)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                .background(Color("tmdb-green"))
+                .background(Color(UIColor.tmdb_green))
                 .opacity(isEnabled ? 1 : 0.5)
                 .cornerRadius(5)
         }

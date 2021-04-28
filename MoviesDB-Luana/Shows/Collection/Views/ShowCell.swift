@@ -5,6 +5,7 @@
 //  Created by Luana Chen Chih Jun on 31/03/21.
 //
 
+import Commons
 import Combine
 import SwiftUI
 
@@ -29,7 +30,7 @@ struct ShowCell: View {
 
                 HStack {
                     Text(viewModel.show.name)
-                        .foregroundColor(Color("tmdb-green"))
+                        .foregroundColor(Color(UIColor.green))
                         .font(.system(size: 13, weight: .bold))
                     Spacer()
                 }
@@ -42,7 +43,7 @@ struct ShowCell: View {
                 }
                 .font(.system(size: 10, weight: .semibold))
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
-                .foregroundColor(Color("tmdb-green"))
+                .foregroundColor(Color(UIColor.green))
                 Text(viewModel.show.overview)
                     .foregroundColor(.white)
                     .font(.system(size: 10))
@@ -50,7 +51,7 @@ struct ShowCell: View {
                     .frame(maxHeight: 56)
                 Spacer()
             }
-            .background(Color("tmdb-grey"))
+            .background(Color(UIColor.tmdb_grey))
             .cornerRadius(15)
         }
     }

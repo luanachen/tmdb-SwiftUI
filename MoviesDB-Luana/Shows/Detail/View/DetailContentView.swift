@@ -5,6 +5,7 @@
 //  Created by Luana Chen Chih Jun on 07/04/21.
 //
 
+import Commons
 import SwiftUI
 
 struct DetailContentView: View {
@@ -16,7 +17,7 @@ struct DetailContentView: View {
                 HStack {
                     Text("Summary")
                         .font(.system(size: 18))
-                        .foregroundColor(Color("tmdb-green"))
+                        .foregroundColor(Color(UIColor.tmdb_green))
                         .fontWeight(.bold)
                     Spacer()
                 }
@@ -30,7 +31,7 @@ struct DetailContentView: View {
                         viewModel.isMarkedAsFavorite.toggle()
                     }, label: {
                         Image(systemName: viewModel.isMarkedAsFavorite ? "heart.fill" : "heart")
-                            .foregroundColor(Color("tmdb-green"))
+                            .foregroundColor(Color(UIColor.tmdb_green))
                     })
                     .frame(width: 24, height: 24)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 6))
@@ -51,7 +52,7 @@ struct DetailContentView: View {
                 HStack {
                     Text(viewModel.lastSeason != nil ? "Last Season" : "")
                         .font(.system(size: 18))
-                        .foregroundColor(Color("tmdb-green"))
+                        .foregroundColor(Color(UIColor.tmdb_green))
                         .fontWeight(.bold)
                     Spacer()
                 }
@@ -80,7 +81,7 @@ struct DetailContentView: View {
 
                         Text(viewModel.lastSeasonDate ?? "")
                             .font(.system(size: 10))
-                            .foregroundColor(Color("tmdb-green"))
+                            .foregroundColor(Color(UIColor.tmdb_green))
                             .fontWeight(.semibold)
 
                         if viewModel.lastSeason != nil {
@@ -90,7 +91,7 @@ struct DetailContentView: View {
                             .padding()
                             .frame(height: 30)
                             .font(.system(size: 10, weight: .regular))
-                            .background(Color("tmdb-green"))
+                            .background(Color(UIColor.tmdb_green))
                             .foregroundColor(.white)
                             .cornerRadius(5)
                         }
@@ -102,7 +103,7 @@ struct DetailContentView: View {
                 HStack {
                     Text(viewModel.casts.isEmpty ? "" : "Cast")
                         .font(.system(size: 18))
-                        .foregroundColor(Color("tmdb-green"))
+                        .foregroundColor(Color(UIColor.tmdb_green))
                         .fontWeight(.bold)
                     Spacer()
                 }
@@ -147,7 +148,7 @@ struct DetailContentView: View {
 
             Spacer()
         }
-        .background(Color("tmdb-grey"))
+        .background(Color(UIColor.tmdb_grey))
         .cornerRadius(15)
         .onAppear(perform: {
             viewModel.fetchShowDetail()
