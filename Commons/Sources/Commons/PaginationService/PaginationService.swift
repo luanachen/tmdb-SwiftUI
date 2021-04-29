@@ -8,16 +8,18 @@
 import Combine
 import Foundation
 
-protocol PaginationServiceType {
+public protocol PaginationServiceType {
     var isPaginating: Bool { get }
     func performPagination<T: Decodable>(request: URLRequest, decodingType: T.Type) -> AnyPublisher<PaginatedResponse<T>, Error>
 }
 
-class PaginationService: PaginationServiceType, MoviesDBNetworkClientType {
-    var session: URLSession = URLSession.shared
-    var isPaginating = false
-
-    func performPagination<T: Decodable>(request: URLRequest, decodingType: T.Type) -> AnyPublisher<PaginatedResponse<T>, Error> {
+public class PaginationService: PaginationServiceType, MoviesDBNetworkClientType {
+    public var session: URLSession = URLSession.shared
+    public var isPaginating = false
+    
+    public init() {}
+    
+    public func performPagination<T: Decodable>(request: URLRequest, decodingType: T.Type) -> AnyPublisher<PaginatedResponse<T>, Error> {
         return Future { seal in
             self.isPaginating = true
             self.fetch(with: request) { json in
