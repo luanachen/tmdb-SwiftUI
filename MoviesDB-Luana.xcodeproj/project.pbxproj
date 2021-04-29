@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F03DB5B2639D8BF004B09C0 /* Commons in Frameworks */ = {isa = PBXBuildFile; productRef = 0F03DB5A2639D8BF004B09C0 /* Commons */; };
+		0F03DB5F263B1FD3004B09C0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F03DB5E263B1FD2004B09C0 /* Images.xcassets */; };
 		EB0C54A02620A32300272C3D /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0C549F2620A32300272C3D /* NavigationBarModifier.swift */; };
 		EB1C33EF261B778A00F3C5E1 /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */; };
 		EB1C33F0261B778A00F3C5E1 /* LoginTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */; };
@@ -77,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		0F03DB582639D8B1004B09C0 /* Commons */ = {isa = PBXFileReference; lastKnownFileType = text; path = Commons; sourceTree = SOURCE_ROOT; };
+		0F03DB5E263B1FD2004B09C0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EB0C549F2620A32300272C3D /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		EB1C33EC261B778900F3C5E1 /* LoginButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		EB1C33ED261B778A00F3C5E1 /* LoginTextFieldModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextFieldModifier.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				EB42848D2626196F00E630C7 /* Utils */,
 				EB0C54B32626005300272C3D /* SupportingFiles */,
 				EB8E24722613CE31009D9409 /* Preview Content */,
+				0F03DB5E263B1FD2004B09C0 /* Images.xcassets */,
 			);
 			path = "MoviesDB-Luana";
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 			files = (
 				EB3A438E262DDCA0008CD32B /* popularTV.json in Resources */,
 				EB8E24742613CE31009D9409 /* Preview Assets.xcassets in Resources */,
+				0F03DB5F263B1FD3004B09C0 /* Images.xcassets in Resources */,
 				EB3A4392262DDCA2008CD32B /* showDetail.json in Resources */,
 				EB3A4378262DD934008CD32B /* createSession.json in Resources */,
 				EB3A4369262DD832008CD32B /* requestToken.json in Resources */,
@@ -856,6 +860,7 @@
 		EB8E248F2613CE31009D9409 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesDB-Luana/Preview Content\"";
@@ -876,6 +881,7 @@
 		EB8E24902613CE31009D9409 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesDB-Luana/Preview Content\"";

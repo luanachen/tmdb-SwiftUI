@@ -62,7 +62,7 @@ struct DetailContentView: View {
                         AsyncImage(
                             url: url,
                             placeholder: {
-                                Image("placeholder")
+                                Image.placeholder
                                     .resizable()
                                     .background(Color.gray)
                             },
@@ -120,7 +120,7 @@ struct DetailContentView: View {
                                     AsyncImage(
                                         url: imageUrl,
                                         placeholder: {
-                                            Image("placeholder")
+                                            Image.placeholder
                                                 .resizable()
                                                 .background(Color.gray)
                                         },

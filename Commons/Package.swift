@@ -17,7 +17,7 @@ let package = Package(
     targets: [
         .target(
             name: "Commons",
-            dependencies: []),
+            dependencies: ["NetworkHelper"]),
         .testTarget(
             name: "CommonsTests",
             dependencies: ["Commons"]),

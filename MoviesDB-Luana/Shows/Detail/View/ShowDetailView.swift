@@ -18,7 +18,7 @@ struct ShowDetailView: View {
                     AsyncImage(
                         url: viewModel.posterUrl,
                         placeholder: {
-                            Image("placeholder")
+                            Image.placeholder
                                 .resizable()
                                 .background(Color.gray)
                         },

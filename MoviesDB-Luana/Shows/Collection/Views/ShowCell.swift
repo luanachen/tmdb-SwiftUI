@@ -20,7 +20,7 @@ struct ShowCell: View {
                 AsyncImage(
                     url: viewModel.url,
                     placeholder: {
-                        Image("placeholder")
+                        Image.placeholder
                             .resizable()
                             .background(Color.gray)
                     },
