@@ -7,7 +7,7 @@
 
 import Commons
 import Foundation
-@testable import MoviesDB_Luana
+@testable import Login
 
 class SessionStoreManagerMock: SessionStoreManagerType {
     var didCallSave = false

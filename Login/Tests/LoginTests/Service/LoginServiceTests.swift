@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import MoviesDB_Luana
+@testable import Login
 
 class LoginServiceTests: XCTestCase {
 

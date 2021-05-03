@@ -7,7 +7,7 @@
 
 import Commons
 import Combine
-@testable import MoviesDB_Luana
+@testable import Login
 
 class LoginServiceMock: LoginServiceType {
     let requestTokenResponse = ResponseLoader.getResponseFrom(resource: "requestToken", decodable: Authentication.self)
