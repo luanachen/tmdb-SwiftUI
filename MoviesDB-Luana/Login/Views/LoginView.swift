@@ -16,7 +16,7 @@ struct LoginView: View {
         ZStack {
             Color(UIColor.tmdb_backgroundColor).edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
-                Image("moviedb")
+                Image.moviedb
                     .resizable()
                     .frame(width: 114, height: 128)
                     .padding(.bottom, 82)
