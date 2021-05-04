@@ -5,12 +5,17 @@
 //  Created by Luana Chen Chih Jun on 30/03/21.
 //
 
-import Commons
 import Combine
 import SwiftUI
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
+    
+    weak var delegate: LoginCoordinatorDelegate?
+    
+    init(delegate: LoginCoordinatorDelegate?) {
+        self.delegate = delegate
+    }
 
     var body: some View {
         ZStack {
@@ -30,7 +35,7 @@ struct LoginView: View {
                 .buttonStyle( LoginButtonStyle())
                 .disabled(!viewModel.isValid)
                 .fullScreenCover(isPresented: $viewModel.pushActive, content: {
-                    ShowsCollectionView()
+                    delegate?.startNextFlow()
                 })
             }
             .padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 80))
@@ -45,7 +50,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(delegate: nil)
     }
 }
 

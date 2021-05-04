@@ -7,7 +7,7 @@
 
 import Combine
 import XCTest
-@testable import MoviesDB_Luana
+@testable import Login
 
 class LoginViewModelTests: XCTestCase {
 
