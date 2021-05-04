@@ -21,6 +21,7 @@ class Coordinator: CoordinatorProtocol {
         }
     }
     
+    // Starts Login flow
     private func startLogin() -> AnyView {
         let coordinator = LoginCoordinator(delegate: self)
         return coordinator.start()
