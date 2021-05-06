@@ -8,7 +8,7 @@
 import Commons
 import Foundation
 import XCTest
-@testable import MoviesDB_Luana
+@testable import Shows
 
 class ShowCellViewModelTests: XCTestCase {
 

@@ -5,7 +5,7 @@
 //  Created by Luana Chen Chih Jun on 20/04/21.
 //
 
-@testable import MoviesDB_Luana
+@testable import Shows
 import SnapshotTesting
 import XCTest
 
