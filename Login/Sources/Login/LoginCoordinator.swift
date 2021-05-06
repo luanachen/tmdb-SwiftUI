@@ -15,7 +15,7 @@ public class LoginCoordinator {
     
     weak var delegate: LoginCoordinatorDelegate?
     
-    public init(delegate: LoginCoordinatorDelegate) {
+    public init(delegate: LoginCoordinatorDelegate?) {
         self.delegate = delegate
     }
     

@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "NetworkHelper",
+        "repositoryURL": "https://github.com/luanachen/NetworkHelper",
+        "state": {
+          "branch": null,
+          "revision": "3c2ed310f8596178d1e0ef5ec590daf06bb54b2f",
+          "version": "1.4.2"
+        }
+      },
+      {
+        "package": "SnapshotTesting",
+        "repositoryURL": "https://github.com/pointfreeco/swift-snapshot-testing.git",
+        "state": {
+          "branch": null,
+          "revision": "f8a9c997c3c1dab4e216a8ec9014e23144cbab37",
+          "version": "1.9.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
