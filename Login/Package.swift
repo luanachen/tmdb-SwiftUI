@@ -28,7 +28,7 @@ let package = Package(
             resources: [
                 .process("Responses/createSession.json"),
                 .process("Responses/requestToken.json"),
-                .process("Views/__Snapshots__/LoginViewTests/test_snapshot.1.png")
+                .copy("Views/__Snapshots__/")
             ]),
     ]
 )

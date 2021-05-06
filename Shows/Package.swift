@@ -28,7 +28,8 @@ let package = Package(
             resources: [
                 .process("Responses/popularTV.json"),
                 .process("Responses/showCredits.json"),
-                .process("Responses/showDetail.json")
+                .process("Responses/showDetail.json"),
+                .copy("Views/__Snapshots__/"),
             ]),
     ]
 )
