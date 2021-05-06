@@ -7,7 +7,7 @@
 
 import Commons
 import Combine
-@testable import MoviesDB_Luana
+@testable import Shows
 
 class ShowsServiceMock: ShowsServiceType {
     let paginatedResponse = ResponseLoader.getResponseFrom(resource: "popularTV", decodable: PaginatedResponse<Show>.self)

@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "Login",
+    name: "Shows",
     platforms: [.iOS(.v14)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "Login",
-            targets: ["Login"]),
+            name: "Shows",
+            targets: ["Shows"]),
     ],
     dependencies: [
         .package(path: "../Commons"),
@@ -20,15 +20,15 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "Login",
+            name: "Shows",
             dependencies: ["Commons"]),
         .testTarget(
-            name: "LoginTests",
-            dependencies: ["Login", "Commons", "SnapshotTesting"],
+            name: "ShowsTests",
+            dependencies: ["Shows", "Commons", "SnapshotTesting"],
             resources: [
-                .process("Responses/createSession.json"),
-                .process("Responses/requestToken.json"),
-                .process("Views/__Snapshots__/LoginViewTests/test_snapshot.1.png")
+                .process("Responses/popularTV.json"),
+                .process("Responses/showCredits.json"),
+                .process("Responses/showDetail.json")
             ]),
     ]
 )

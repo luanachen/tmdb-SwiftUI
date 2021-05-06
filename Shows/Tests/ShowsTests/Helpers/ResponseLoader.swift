@@ -6,11 +6,11 @@
 //
 
 import Foundation
-@testable import MoviesDB_Luana
+@testable import Shows
 
 class ResponseLoader {
     static func getResponseFrom<T: Decodable>(resource: String, decodable: T.Type) -> T {
-           guard let url = Bundle.main.url(forResource: resource, withExtension: "json") else { fatalError("Couldn't load json file") }
+           guard let url = Bundle.module.url(forResource: resource, withExtension: "json") else { fatalError("Couldn't load json file") }
            do {
                let jsonData = try Data(contentsOf: url)
                let decoder = JSONDecoder()
